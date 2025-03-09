@@ -87,8 +87,89 @@ class HybridRetriever:
 
     def semantic_search(self, query, top_k=5):
         """Semantic search using FAISS"""
-        # Check if this is a title search
+        # Handle special search types
         is_title_search = query.lower().startswith("ti:")
+        is_author_search = query.lower().startswith("au:")
+
+        # Extract search term
+        search_term = query
+        for prefix in ["au:", "ti:", "abs:", "cat:", "all:"]:
+            if query.lower().startswith(prefix):
+                search_term = query[len(prefix) :].strip()
+                # Remove quotes if present
+                if search_term.startswith('"') and search_term.endswith('"'):
+                    search_term = search_term[1:-1]
+                break
+
+        # Try to load original papers for author matching
+        paper_data = None
+        paper_data_file = os.path.join(
+            os.path.dirname(os.path.dirname(self.index_dir)),
+            "data",
+            f"{self.source}_spider_papers.json",
+        )
+
+        if is_author_search and os.path.exists(paper_data_file):
+            try:
+                with open(paper_data_file, "r", encoding="utf-8") as f:
+                    paper_data = json.load(f)
+            except Exception as e:
+                print(f"Could not load paper data for author matching: {e}")
+
+        # Improved author search - find exact author matches in metadata
+        if is_author_search and paper_data:
+            author_matches = []
+            author_name_parts = search_term.lower().split()
+
+            # First build a mapping from paper_id to authors
+            paper_authors = {}
+            for paper in paper_data:
+                paper_authors[paper["paper_id"]] = paper["authors"]
+
+            # Now check all chunks for papers with this author
+            for idx, metadata in enumerate(self.metadata):
+                paper_id = metadata["paper_id"]
+
+                # Skip if we don't have author info for this paper
+                if paper_id not in paper_authors:
+                    continue
+
+                # Check if the author matches any author of this paper
+                author_match = False
+                matched_author = ""
+
+                for author in paper_authors[paper_id]:
+                    author_lower = author.lower()
+                    # Check if all name parts appear in the author name
+                    if all(part in author_lower for part in author_name_parts):
+                        author_match = True
+                        matched_author = author
+                        break
+
+                if author_match:
+                    author_matches.append(
+                        {
+                            "metadata": metadata,
+                            "distance": 0.0,
+                            "chunk": self.chunks[idx],
+                            "score": 2.0,  # High score for exact author matches
+                            "matched_author": matched_author,
+                        }
+                    )
+
+            # Return author matches if any were found
+            if author_matches:
+                # Remove duplicates by paper_id to avoid showing the same paper multiple times
+                seen_papers = set()
+                unique_matches = []
+                for match in author_matches:
+                    paper_id = match["metadata"]["paper_id"]
+                    if paper_id not in seen_papers:
+                        seen_papers.add(paper_id)
+                        unique_matches.append(match)
+
+                print(f"Found {len(unique_matches)} papers by author: {search_term}")
+                return unique_matches[:top_k]
 
         # For title searches, first try to find exact matches
         if is_title_search:

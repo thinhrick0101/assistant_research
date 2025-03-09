@@ -16,13 +16,29 @@ def crawl_arxiv(query, max_results=100, output_dir="data"):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
+    # Detect search type
+    is_author_search = query.startswith("au:") or any(
+        word[0].isupper() and word[1:].islower() for word in query.split()
+    )
+    is_title_search = query.startswith("ti:")
+
+    # Extract the search term from prefixed queries
+    original_query = query
+    search_term = query
+    for prefix in ["au:", "ti:", "abs:", "cat:", "all:"]:
+        if query.startswith(prefix):
+            search_term = query[len(prefix) :].strip()
+            # Remove quotes if present
+            if search_term.startswith('"') and search_term.endswith('"'):
+                search_term = search_term[1:-1]
+            break
+
     # Check if this looks like a paper title (capitalized words, 4+ words)
     words = query.split()
     capitalized_words = [w for w in words if w[0].isupper() if len(w) > 1]
     likely_title = len(words) >= 4 and len(capitalized_words) >= 1
 
     # Try multiple query formats if needed
-    original_query = query
     client = arxiv.Client(
         page_size=100,
         delay_seconds=3,
@@ -50,6 +66,25 @@ def crawl_arxiv(query, max_results=100, output_dir="data"):
             f"cat:cs.* AND {query}",  # CS categories
             f"all:{query}",  # All fields
         ]
+
+    # Special handling for author searches
+    if is_author_search and not query.startswith("au:"):
+        # If it looks like an author name but doesn't have the prefix, add it
+        query = f'au:"{search_term}"'
+        print(f"Detected author name. Using query: {query}")
+
+    if is_author_search:
+        # Author search formats - try more precise formats
+        query_formats = [
+            f'au:"{search_term}"',  # Exact author match with quotes
+            f"au:{search_term}",  # Author match without quotes
+        ]
+
+        # If this looks like a full name, try searching with last name only as well
+        if " " in search_term:
+            last_name = search_term.split()[-1]
+            query_formats.append(f'au:"{last_name}"')
+            query_formats.append(f"au:{last_name}")
 
     # Try each query format until we get results
     papers = []
@@ -166,6 +201,30 @@ def crawl_arxiv(query, max_results=100, output_dir="data"):
 
         except Exception as e:
             print(f"Error in direct paper search: {str(e)}")
+
+    # When processing papers in an author search, verify author matches
+    if is_author_search and papers:
+        # Filter out papers that don't have the author
+        verified_papers = []
+        author_name_parts = search_term.lower().split()
+
+        for paper in papers:
+            author_match = False
+            # Check if any author name contains ALL parts of the search name
+            for author in paper["authors"]:
+                author_lower = author.lower()
+                # Check if all name parts appear in the author name
+                if all(part in author_lower for part in author_name_parts):
+                    author_match = True
+                    break
+
+            if author_match:
+                verified_papers.append(paper)
+
+        # Use the verified papers if we found any, otherwise keep all results
+        if verified_papers:
+            papers = verified_papers
+            print(f"Filtered to {len(papers)} papers by author: {search_term}")
 
     # Save papers to JSON file if any were found
     if papers:

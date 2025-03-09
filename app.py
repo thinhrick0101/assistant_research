@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import subprocess
 import sys
+import math  # Add this import for math.isnan and math.isinf
 from dotenv import load_dotenv
 from embedding.embedding_manager import EmbeddingManager
 from retrieval.hybrid_retriever import HybridRetriever
@@ -59,9 +60,35 @@ with tab1:
     if search_button and query:
         try:
             with st.spinner("Searching for relevant papers..."):
-                # Modify query based on search type hint
-                actual_query = query
-                if search_type_hint == "Paper Title" and not query.startswith("ti:"):
+                # Detect and format author searches
+                if search_type_hint == "Author":
+                    # Format author search query properly
+                    author_name = query
+                    if not author_name.startswith("au:"):
+                        # Format as author search with quotes for exact match
+                        actual_query = f'au:"{author_name}"'
+                        st.info(f"Searching for papers by author: {author_name}")
+                    else:
+                        actual_query = author_name
+
+                    # Try direct crawling for author search
+                    try:
+                        from direct_crawler import crawl_arxiv
+
+                        output_dir = os.path.join(os.path.dirname(__file__), "data")
+                        st.info(f"Looking for papers by author: {author_name}")
+                        count = crawl_arxiv(actual_query, 20, output_dir)
+                        if count > 0:
+                            # Build index on these results
+                            with st.spinner(
+                                "Building search index for found papers..."
+                            ):
+                                embedding_manager = EmbeddingManager()
+                                embedding_manager.build_faiss_index(source=source)
+                    except Exception as e:
+                        print(f"Error in direct author search: {str(e)}")
+
+                elif search_type_hint == "Paper Title" and not query.startswith("ti:"):
                     actual_query = f'ti:"{query}"'  # Wrap in quotes for exact title
                 elif search_type_hint == "Author" and not query.startswith("au:"):
                     actual_query = f'au:"{query}"'  # Format as author search
@@ -126,48 +153,212 @@ with tab1:
                             st.warning(f"Error processing a search result: {str(e)}")
                             continue
 
-                    # Display each paper
-                    for paper_id, paper_data in paper_results.items():
-                        st.subheader(paper_data["metadata"]["title"])
-                        st.write(
-                            f"Source: {paper_data['metadata']['source']} | [View Paper]({paper_data['metadata']['url']})"
+                    # Special handling for author search results display
+                    if search_type_hint == "Author" and paper_results:
+                        author_name = query.replace("au:", "").replace('"', "")
+
+                        # Display a heading for author results
+                        st.subheader(f"📚 Papers by {author_name}")
+
+                        # Add an info message about the search
+                        st.info(
+                            f"Showing {len(paper_results)} papers authored by {author_name}"
                         )
 
-                        # Show relevance score - Fix for NumPy float32 issue
-                        # Convert to native Python float to prevent Streamlit error
-                        avg_score = float(
-                            sum(paper_data["scores"]) / len(paper_data["scores"])
-                        )
-                        st.progress(
-                            min(avg_score, 1.0),
-                            text=f"Relevance Score: {avg_score:.2f}",
-                        )
+                        # Display each paper with author highlighted
+                        for paper_id, paper_data in paper_results.items():
+                            st.subheader(paper_data["metadata"]["title"])
+                            st.write(
+                                f"Source: {paper_data['metadata']['source']} | [View Paper]({paper_data['metadata']['url']})"
+                            )
 
-                        # Join chunks for this paper
-                        full_text = "\n\n".join(paper_data["chunks"])
+                            # Fix for NaN in progress bar - handle empty lists and invalid values
+                            try:
+                                if (
+                                    paper_data["scores"]
+                                    and len(paper_data["scores"]) > 0
+                                ):
+                                    # Filter out any non-numeric or NaN values
+                                    valid_scores = []
+                                    for score in paper_data["scores"]:
+                                        try:
+                                            score_value = float(score)
+                                            if not (
+                                                math.isnan(score_value)
+                                                or math.isinf(score_value)
+                                            ):
+                                                valid_scores.append(score_value)
+                                        except (ValueError, TypeError):
+                                            continue
 
-                        # FIX: Separate expanders for summary and key points
-                        summarizer = RecursiveSummarizer()
+                                    if valid_scores:
+                                        avg_score = sum(valid_scores) / len(
+                                            valid_scores
+                                        )
+                                    else:
+                                        avg_score = 0.5  # Default when no valid scores
+                                else:
+                                    avg_score = 0.5  # Default when scores list is empty
 
-                        # Summary expander
-                        with st.expander("View Summary"):
-                            with st.spinner("Generating summary..."):
-                                summary = summarizer.recursive_summarize(
-                                    full_text, query
+                                # Final safety check before displaying
+                                if (
+                                    not isinstance(avg_score, (int, float))
+                                    or math.isnan(avg_score)
+                                    or math.isinf(avg_score)
+                                ):
+                                    avg_score = 0.5
+
+                                # Ensure value is in [0.0, 1.0] range
+                                safe_score = max(0.0, min(float(avg_score), 1.0))
+                                st.progress(
+                                    safe_score,
+                                    text=f"Relevance Score: {safe_score:.2f}",
                                 )
-                                st.write(summary)
+                            except Exception as e:
+                                # Fallback for any other error
+                                st.info(f"Could not display relevance score: {str(e)}")
+                                st.progress(0.5, text="Relevance Score: N/A")
 
-                        # Key points expander (now at same level, not nested)
-                        with st.expander("View Key Points"):
-                            with st.spinner("Extracting key points..."):
-                                key_points = summarizer.extract_key_points(summary)
-                                st.write(key_points)
+                            # Join chunks for this paper
+                            full_text = "\n\n".join(paper_data["chunks"])
 
-                        # Original text expander
-                        with st.expander("View Original Text"):
-                            st.write(full_text)
+                            # FIX: Separate expanders for summary and key points
+                            summarizer = RecursiveSummarizer()
 
-                        st.divider()
+                            # Summary expander
+                            with st.expander("View Summary"):
+                                with st.spinner("Generating summary..."):
+                                    summary = summarizer.recursive_summarize(
+                                        full_text, query
+                                    )
+                                    st.write(summary)
+
+                            # Key points expander (now at same level, not nested)
+                            with st.expander("View Key Points"):
+                                with st.spinner("Extracting key points..."):
+                                    key_points = summarizer.extract_key_points(summary)
+                                    st.write(key_points)
+
+                            # Original text expander
+                            with st.expander("View Original Text"):
+                                st.write(full_text)
+
+                            # Add a special section to highlight author's contribution
+                            with st.expander(f"Author's Contributions"):
+                                try:
+                                    with st.spinner(
+                                        f"Analyzing {author_name}'s contributions..."
+                                    ):
+                                        # Extract just the portions of the paper that mention this author
+                                        author_mentions = []
+                                        for chunk in paper_data["chunks"]:
+                                            sentences = chunk.split(". ")
+                                            for sentence in sentences:
+                                                # Check if the author name appears in this sentence
+                                                if (
+                                                    author_name.lower()
+                                                    in sentence.lower()
+                                                ):
+                                                    author_mentions.append(
+                                                        sentence.strip() + "."
+                                                    )
+
+                                        if author_mentions:
+                                            st.write("Sections mentioning this author:")
+                                            for mention in author_mentions[
+                                                :3
+                                            ]:  # Show just a few mentions
+                                                st.markdown(f"> {mention}")
+                                        else:
+                                            st.write(
+                                                "No specific mentions of this author found in the paper chunks."
+                                            )
+                                except Exception as e:
+                                    st.error(
+                                        f"Error analyzing author contributions: {str(e)}"
+                                    )
+
+                            st.divider()
+                    else:
+                        # Display each paper
+                        for paper_id, paper_data in paper_results.items():
+                            st.subheader(paper_data["metadata"]["title"])
+                            st.write(
+                                f"Source: {paper_data['metadata']['source']} | [View Paper]({paper_data['metadata']['url']})"
+                            )
+
+                            # Fix for NaN in progress bar - handle empty lists and invalid values
+                            try:
+                                if (
+                                    paper_data["scores"]
+                                    and len(paper_data["scores"]) > 0
+                                ):
+                                    # Filter out any non-numeric or NaN values
+                                    valid_scores = []
+                                    for score in paper_data["scores"]:
+                                        try:
+                                            score_value = float(score)
+                                            if not (
+                                                math.isnan(score_value)
+                                                or math.isinf(score_value)
+                                            ):
+                                                valid_scores.append(score_value)
+                                        except (ValueError, TypeError):
+                                            continue
+
+                                    if valid_scores:
+                                        avg_score = sum(valid_scores) / len(
+                                            valid_scores
+                                        )
+                                    else:
+                                        avg_score = 0.5  # Default when no valid scores
+                                else:
+                                    avg_score = 0.5  # Default when scores list is empty
+
+                                # Final safety check before displaying
+                                if (
+                                    not isinstance(avg_score, (int, float))
+                                    or math.isnan(avg_score)
+                                    or math.isinf(avg_score)
+                                ):
+                                    avg_score = 0.5
+
+                                # Ensure value is in [0.0, 1.0] range
+                                safe_score = max(0.0, min(float(avg_score), 1.0))
+                                st.progress(
+                                    safe_score,
+                                    text=f"Relevance Score: {safe_score:.2f}",
+                                )
+                            except Exception as e:
+                                # Fallback for any other error
+                                st.info(f"Could not display relevance score: {str(e)}")
+                                st.progress(0.5, text="Relevance Score: N/A")
+
+                            # Join chunks for this paper
+                            full_text = "\n\n".join(paper_data["chunks"])
+
+                            # FIX: Separate expanders for summary and key points
+                            summarizer = RecursiveSummarizer()
+
+                            # Summary expander
+                            with st.expander("View Summary"):
+                                with st.spinner("Generating summary..."):
+                                    summary = summarizer.recursive_summarize(
+                                        full_text, query
+                                    )
+                                    st.write(summary)
+
+                            # Key points expander (now at same level, not nested)
+                            with st.expander("View Key Points"):
+                                with st.spinner("Extracting key points..."):
+                                    key_points = summarizer.extract_key_points(summary)
+                                    st.write(key_points)
+
+                            # Original text expander
+                            with st.expander("View Original Text"):
+                                st.write(full_text)
+
+                            st.divider()
                 else:
                     st.info("No relevant papers found. Try modifying your query.")
         except FileNotFoundError:
