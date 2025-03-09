@@ -358,50 +358,135 @@ class HybridRetriever:
 
         # Combine results with a score normalization
         combined_results = {}
-        max_semantic_score = (
-            max([r["score"] for r in semantic_results]) if semantic_results else 1.0
-        )
-        max_keyword_score = (
-            max([r["score"] for r in keyword_results]) if keyword_results else 1.0
-        )
+
+        # Get max scores with added safety checks
+        try:
+            if semantic_results:
+                valid_scores = [
+                    float(r["score"])
+                    for r in semantic_results
+                    if isinstance(r["score"], (int, float))
+                    and not math.isnan(r["score"])
+                    and not math.isinf(r["score"])
+                ]
+                max_semantic_score = max(valid_scores) if valid_scores else 1.0
+            else:
+                max_semantic_score = 1.0
+
+            if keyword_results:
+                valid_scores = [
+                    float(r["score"])
+                    for r in keyword_results
+                    if isinstance(r["score"], (int, float))
+                    and not math.isnan(r["score"])
+                    and not math.isinf(r["score"])
+                ]
+                max_keyword_score = max(valid_scores) if valid_scores else 1.0
+            else:
+                max_keyword_score = 1.0
+
+            # Ensure we don't have zero division
+            if max_semantic_score <= 0:
+                max_semantic_score = 1.0
+            if max_keyword_score <= 0:
+                max_keyword_score = 1.0
+        except Exception as e:
+            print(f"Error calculating max scores: {e}")
+            max_semantic_score = 1.0
+            max_keyword_score = 1.0
 
         # Process semantic results
         for result in semantic_results:
-            idx = (
-                result["metadata"]["paper_id"]
-                + "_"
-                + str(result["metadata"]["chunk_index"])
-            )
-            normalized_score = result["score"] / max_semantic_score
-            combined_results[idx] = {
-                "metadata": result["metadata"],
-                "chunk": result["chunk"],
-                "semantic_score": normalized_score,
-                "keyword_score": 0,
-                "combined_score": alpha * normalized_score,
-            }
+            try:
+                idx = (
+                    result["metadata"]["paper_id"]
+                    + "_"
+                    + str(result["metadata"]["chunk_index"])
+                )
 
-        # Process keyword results
-        for result in keyword_results:
-            idx = (
-                result["metadata"]["paper_id"]
-                + "_"
-                + str(result["metadata"]["chunk_index"])
-            )
-            normalized_score = result["score"] / max_keyword_score
-            if idx in combined_results:
-                combined_results[idx]["keyword_score"] = normalized_score
-                combined_results[idx]["combined_score"] += (
-                    1 - alpha
-                ) * normalized_score
-            else:
+                # Handle potential NaN or inf in scores
+                score = result["score"]
+                if (
+                    not isinstance(score, (int, float))
+                    or math.isnan(score)
+                    or math.isinf(score)
+                ):
+                    score = 0.5  # Default fallback value
+
+                # Safe division with sanity check
+                normalized_score = (
+                    float(score) / max_semantic_score if max_semantic_score > 0 else 0.5
+                )
+                # Ensure normalized_score is in [0, 1]
+                normalized_score = max(0.0, min(normalized_score, 1.0))
+
                 combined_results[idx] = {
                     "metadata": result["metadata"],
                     "chunk": result["chunk"],
-                    "semantic_score": 0,
-                    "keyword_score": normalized_score,
-                    "combined_score": (1 - alpha) * normalized_score,
+                    "semantic_score": normalized_score,
+                    "keyword_score": 0,
+                    "combined_score": alpha * normalized_score,
                 }
+            except Exception as e:
+                print(f"Error processing semantic result: {e}")
+                continue
+
+        # Process keyword results
+        for result in keyword_results:
+            try:
+                idx = (
+                    result["metadata"]["paper_id"]
+                    + "_"
+                    + str(result["metadata"]["chunk_index"])
+                )
+
+                # Handle potential NaN or inf in scores
+                score = result["score"]
+                if (
+                    not isinstance(score, (int, float))
+                    or math.isnan(score)
+                    or math.isinf(score)
+                ):
+                    score = 0.5  # Default fallback value
+
+                # Safe division with sanity check
+                normalized_score = (
+                    float(score) / max_keyword_score if max_keyword_score > 0 else 0.5
+                )
+                # Ensure normalized_score is in [0, 1]
+                normalized_score = max(0.0, min(normalized_score, 1.0))
+
+                if idx in combined_results:
+                    combined_results[idx]["keyword_score"] = normalized_score
+                    combined_results[idx]["combined_score"] += (
+                        1 - alpha
+                    ) * normalized_score
+                else:
+                    combined_results[idx] = {
+                        "metadata": result["metadata"],
+                        "chunk": result["chunk"],
+                        "semantic_score": 0,
+                        "keyword_score": normalized_score,
+                        "combined_score": (1 - alpha) * normalized_score,
+                    }
+            except Exception as e:
+                print(f"Error processing keyword result: {e}")
+                continue
+
+        # Final validation of combined scores
+        for idx in combined_results:
+            score = combined_results[idx]["combined_score"]
+            if (
+                not isinstance(score, (int, float))
+                or math.isnan(score)
+                or math.isinf(score)
+            ):
+                combined_results[idx]["combined_score"] = 0.5
+            else:
+                # Ensure score is in valid range
+                combined_results[idx]["combined_score"] = max(
+                    0.0, min(float(score), 1.0)
+                )
 
         # Sort by combined score
         sorted_results = sorted(

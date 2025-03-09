@@ -1,412 +1,208 @@
 [
   {
-    "paper_id": "2108.06529v2",
-    "title": "SEIGuard: An Authentication-simplified and Deceptive Scheme to Protect Server-side Social Engineering Information Against Brute-force Attacks",
+    "paper_id": "2407.11005v2",
+    "title": "RAGBench: Explainable Benchmark for Retrieval-Augmented Generation Systems",
     "authors": [
-      "Zuoguang Wang",
-      "Jiaqian Peng",
-      "Hongsong Zhu",
-      "Limin Sun"
+      "Robert Friel",
+      "Masha Belyi",
+      "Atindriyo Sanyal"
     ],
-    "abstract": "This paper proposes an authentication-simplified and deceptive scheme\n(SEIGuard) to protect server-side social engineering information (SEI) and\nother information against brute-force attacks. In SEIGuard, the password check\nin authentication is omitted and this design is further combined with the SEI\nencryption design using honey encryption. The login password merely serves as a\ntemporary key to encrypt SEI and there is no password plaintext or ciphertext\nstored in the database. During the login, the server doesn't check the login\npasswords, correct passwords decrypt ciphertexts to be correct plaintexts;\nincorrect passwords decrypt ciphertexts to be phony but plausible-looking\nplaintexts (sampled from the same distribution). And these two situations share\nthe same undifferentiated backend procedures. This scheme eliminates the anchor\nthat both online and offline brute-force attacks depending on. Furthermore,\nthis paper presents four SEIGuard scheme designs and algorithms for 4 typical\nsocial engineering information objects (mobile phone number, identification\nnumber, email address, personal name), which represent 4 different types of\nmessage space, i.e. 1) limited and uniformly distributed, 2) limited, complex\nand uniformly distributed, 3) unlimited and uniformly distributed, 4) unlimited\nand non-uniformly distributed message space. Specially, we propose multiple\nsmall mapping files strategies, binary search algorithms, two-part HE (DTE)\ndesign and incremental mapping files solutions for the applications of SEIGuard\nscheme. Finally, this paper develops the SEIGuard system based on the proposed\nschemes, designs and algorithms. Experiment result shows that the SEIGuard\nscheme can effectively protect server-side SEI against brute-force attacks, and\nSEIGuard also has an impressive real-time response performance that is better\nthan conventional PBE server scheme and HE encryption/decryption.",
-    "url": "http://arxiv.org/abs/2108.06529v2",
-    "pdf_url": "http://arxiv.org/pdf/2108.06529v2",
-    "published_date": "2021-08-14",
+    "abstract": "Retrieval-Augmented Generation (RAG) has become a standard architectural\npattern for incorporating domain-specific knowledge into user-facing chat\napplications powered by Large Language Models (LLMs). RAG systems are\ncharacterized by (1) a document retriever that queries a domain-specific corpus\nfor context information relevant to an input query, and (2) an LLM that\ngenerates a response based on the provided query and context. However,\ncomprehensive evaluation of RAG systems remains a challenge due to the lack of\nunified evaluation criteria and annotated datasets. In response, we introduce\nRAGBench: the first comprehensive, large-scale RAG benchmark dataset of 100k\nexamples. It covers five unique industry-specific domains and various RAG task\ntypes. RAGBench examples are sourced from industry corpora such as user\nmanuals, making it particularly relevant for industry applications. Further, we\nformalize the TRACe evaluation framework: a set of explainable and actionable\nRAG evaluation metrics applicable across all RAG domains. We release the\nlabeled dataset at https://huggingface.co/datasets/rungalileo/ragbench.\nRAGBench explainable labels facilitate holistic evaluation of RAG systems,\nenabling actionable feedback for continuous improvement of production\napplications. Thorough extensive benchmarking, we find that LLM-based RAG\nevaluation methods struggle to compete with a finetuned RoBERTa model on the\nRAG evaluation task. We identify areas where existing approaches fall short and\npropose the adoption of RAGBench with TRACe towards advancing the state of RAG\nevaluation systems.",
+    "url": "http://arxiv.org/abs/2407.11005v2",
+    "pdf_url": "http://arxiv.org/pdf/2407.11005v2",
+    "published_date": "2024-06-25",
     "source": "arxiv",
     "categories": [
-      "cs.CR"
-    ]
-  },
-  {
-    "paper_id": "2203.07933v2",
-    "title": "Threat Detection for General Social Engineering Attack Using Machine Learning Techniques",
-    "authors": [
-      "Zuoguang Wang",
-      "Yimo Ren",
-      "Hongsong Zhu",
-      "Limin Sun"
-    ],
-    "abstract": "This paper explores the threat detection for general Social Engineering (SE)\nattack using Machine Learning (ML) techniques, rather than focusing on or\nlimited to a specific SE attack type, e.g. email phishing. Firstly, this paper\nprocesses and obtains more SE threat data from the previous Knowledge Graph\n(KG), and then extracts different threat features and generates new datasets\ncorresponding with three different feature combinations. Finally, 9 types of ML\nmodels are created and trained using the three datasets, respectively, and\ntheir performance are compared and analyzed with 27 threat detectors and 270\ntimes of experiments. The experimental results and analyses show that: 1) the\nML techniques are feasible in detecting general SE attacks and some ML models\nare quite effective; ML-based SE threat detection is complementary with\nKG-based approaches; 2) the generated datasets are usable and the SE domain\nontology proposed in previous work can dissect SE attacks and deliver the SE\nthreat features, allowing it to be used as a data model for future research.\nBesides, more conclusions and analyses about the characteristics of different\nML detectors and the datasets are discussed.",
-    "url": "http://arxiv.org/abs/2203.07933v2",
-    "pdf_url": "http://arxiv.org/pdf/2203.07933v2",
-    "published_date": "2022-03-15",
-    "source": "arxiv",
-    "categories": [
-      "cs.CR",
-      "cs.LG"
-    ]
-  },
-  {
-    "paper_id": "2106.01157v1",
-    "title": "Social Engineering in Cybersecurity: A Domain Ontology and Knowledge Graph Application Examples",
-    "authors": [
-      "Zuoguang Wang",
-      "Hongsong Zhu",
-      "Peipei Liu",
-      "Limin Sun"
-    ],
-    "abstract": "Social engineering has posed a serious threat to cyberspace security. To\nprotect against social engineering attacks, a fundamental work is to know what\nconstitutes social engineering. This paper first develops a domain ontology of\nsocial engineering in cybersecurity and conducts ontology evaluation by its\nknowledge graph application. The domain ontology defines 11 concepts of core\nentities that significantly constitute or affect social engineering domain,\ntogether with 22 kinds of relations describing how these entities related to\neach other. It provides a formal and explicit knowledge schema to understand,\nanalyze, reuse and share domain knowledge of social engineering. Furthermore,\nthis paper builds a knowledge graph based on 15 social engineering attack\nincidents and scenarios. 7 knowledge graph application examples (in 6 analysis\npatterns) demonstrate that the ontology together with knowledge graph is useful\nto 1) understand and analyze social engineering attack scenario and incident,\n2) find the top ranked social engineering threat elements (e.g. the most\nexploited human vulnerabilities and most used attack mediums), 3) find\npotential social engineering threats to victims, 4) find potential targets for\nsocial engineering attackers, 5) find potential attack paths from specific\nattacker to specific target, and 6) analyze the same origin attacks.",
-    "url": "http://arxiv.org/abs/2106.01157v1",
-    "pdf_url": "http://arxiv.org/pdf/2106.01157v1",
-    "published_date": "2021-05-28",
-    "source": "arxiv",
-    "categories": [
-      "cs.CR"
-    ]
-  },
-  {
-    "paper_id": "1502.01815v3",
-    "title": "Fog Computing: Focusing on Mobile Users at the Edge",
-    "authors": [
-      "Tom H. Luan",
-      "Longxiang Gao",
-      "Zhi Li",
-      "Yang Xiang",
-      "Guiyi Wei",
-      "Limin Sun"
-    ],
-    "abstract": "With smart devices, particular smartphones, becoming our everyday companions,\nthe ubiquitous mobile Internet and computing applications pervade people daily\nlives. With the surge demand on high-quality mobile services at anywhere, how\nto address the ubiquitous user demand and accommodate the explosive growth of\nmobile traffics is the key issue of the next generation mobile networks. The\nFog computing is a promising solution towards this goal. Fog computing extends\ncloud computing by providing virtualized resources and engaged location-based\nservices to the edge of the mobile networks so as to better serve mobile\ntraffics. Therefore, Fog computing is a lubricant of the combination of cloud\ncomputing and mobile applications. In this article, we outline the main\nfeatures of Fog computing and describe its concept, architecture and design\ngoals. Lastly, we discuss some of the future research issues from the\nnetworking perspective.",
-    "url": "http://arxiv.org/abs/1502.01815v3",
-    "pdf_url": "http://arxiv.org/pdf/1502.01815v3",
-    "published_date": "2015-02-06",
-    "source": "arxiv",
-    "categories": [
-      "cs.NI"
-    ]
-  },
-  {
-    "paper_id": "1602.01509v3",
-    "title": "A View of Fog Computing from Networking Perspective",
-    "authors": [
-      "Tom H. Luan",
-      "Longxiang Gao",
-      "Zhi Li",
-      "Yang Xiang",
-      "Guiyi We",
-      "Limin Sun"
-    ],
-    "abstract": "With smart devices, particular smartphones, becoming our everyday companions,\nthe ubiquitous mobile Internet and computing applications pervade people's\ndaily lives. With the surge demand on high-quality mobile services at anywhere,\nhow to address the ubiquitous user demand and accommodate the explosive growth\nof mobile traffics is the key issue of the next generation mobile networks. The\nFog computing is a promising solution towards this goal. Fog computing extends\ncloud computing by providing virtualized resources and engaged location-based\nservices to the edge of the mobile networks so as to better serve mobile\ntraffics. Therefore, Fog computing is a lubricant of the combination of cloud\ncomputing and mobile applications. In this article, we outline the main\nfeatures of Fog computing and describe its concept, architecture and design\ngoals. Lastly, we discuss some of the future research issues from the\nnetworking perspective.",
-    "url": "http://arxiv.org/abs/1602.01509v3",
-    "pdf_url": "http://arxiv.org/pdf/1602.01509v3",
-    "published_date": "2016-02-03",
-    "source": "arxiv",
-    "categories": [
-      "cs.NI"
-    ]
-  },
-  {
-    "paper_id": "1803.09145v1",
-    "title": "SMDP-based Downlink Packet Scheduling Scheme for Solar Energy Assisted Heterogeneous Networks",
-    "authors": [
-      "Qizhen Li",
-      "Jie Gao",
-      "Jinming Wen",
-      "Xiaohu Tang",
-      "Lian Zhao",
-      "Limin Sun"
-    ],
-    "abstract": "Renewable energy assisted heterogeneous networks can improve system capacity\nand reduce conventional energy consumption. In this paper, we propose a\nsemi-Markov decision process (SMDP)-based downlink packet scheduling scheme for\nsolar energy assisted heterogeneous networks (HetNets), where solar radiation\nis modeled as a continuous-time Markov chain (CTMC) and the arrivals of\nmulti-class downlink packets are modeled as Poisson processes. The proposed\ndownlink packet scheduling scheme can be compatible with the mainstream\nwireless packet networks such as long-term evolution (LTE) networks and the\nfifth-generation (5G) networks because the SMDP is a real-time admission\ncontrol model. To obtain an asymptotically optimal downlink packet scheduling\npolicy, we solve the semi-Markov decision problem using the relative value\niteration algorithm under average criterion and the value iteration algorithm\nunder discounted criterion, respectively. The simulation results show that the\naverage cost of the SMDP-based packet scheduling scheme is less than that of\nthe greedy packet scheduling scheme.",
-    "url": "http://arxiv.org/abs/1803.09145v1",
-    "pdf_url": "http://arxiv.org/pdf/1803.09145v1",
-    "published_date": "2018-03-24",
-    "source": "arxiv",
-    "categories": [
-      "cs.NI"
-    ]
-  },
-  {
-    "paper_id": "2010.13396v1",
-    "title": "XLBoost-Geo: An IP Geolocation System Based on Extreme Landmark Boosting",
-    "authors": [
-      "Yucheng Wang",
-      "Hongsong Zhu",
-      "Jinfa Wang",
-      "Jie Liu",
-      "Yong Wang",
-      "Limin Sun"
-    ],
-    "abstract": "IP geolocation aims at locating the geographical position of Internet\ndevices, which plays an essential role in many Internet applications. In this\nfield, a long-standing challenge is how to find a large number of\nhighly-reliable landmarks, which is the key to improve the precision of IP\ngeolocation. To this end, many efforts have been made, while many IP\ngeolocation methods still suffer from unacceptable error distance because of\nthe lack of landmarks. In this paper, we propose a novel IP geolocation system,\nnamed XLBoost-Geo, which focuses on enhancing the number and the density of\nhighly reliable landmarks. The main idea is to extract location-indicating\nclues from web pages and locating the web servers based on the clues. Based on\nthe landmarks, XLBoost-Geo is able to geolocate arbitrary IPs with little error\ndistance. Specifically, we first design an entity extracting method based on a\nbidirectional LSTM neural network with a self-adaptive loss function (LSTM-Ada)\nto extract the location-indicating clues on web pages and then generate\nlandmarks based on the clues. Then, by measurements on network latency and\ntopology, we estimate the closest landmark and associate the coordinate of the\nlandmark with the location of the target IP. The results of our experiments\nclearly validate the effectiveness and efficiency of the extracting method, the\nprecision, number, coverage of the landmarks, and the precision of the IP\ngeolocation. On RIPE Atlas nodes, XLBoost-Geo achieves 2,561m median error\ndistance, which outperforms SLG and IPIP.",
-    "url": "http://arxiv.org/abs/2010.13396v1",
-    "pdf_url": "http://arxiv.org/pdf/2010.13396v1",
-    "published_date": "2020-10-26",
-    "source": "arxiv",
-    "categories": [
-      "cs.NI"
-    ]
-  },
-  {
-    "paper_id": "2010.13415v1",
-    "title": "TPLinker: Single-stage Joint Extraction of Entities and Relations Through Token Pair Linking",
-    "authors": [
-      "Yucheng Wang",
-      "Bowen Yu",
-      "Yueyang Zhang",
-      "Tingwen Liu",
-      "Hongsong Zhu",
-      "Limin Sun"
-    ],
-    "abstract": "Extracting entities and relations from unstructured text has attracted\nincreasing attention in recent years but remains challenging, due to the\nintrinsic difficulty in identifying overlapping relations with shared entities.\nPrior works show that joint learning can result in a noticeable performance\ngain. However, they usually involve sequential interrelated steps and suffer\nfrom the problem of exposure bias. At training time, they predict with the\nground truth conditions while at inference it has to make extraction from\nscratch. This discrepancy leads to error accumulation. To mitigate the issue,\nwe propose in this paper a one-stage joint extraction model, namely, TPLinker,\nwhich is capable of discovering overlapping relations sharing one or both\nentities while immune from the exposure bias. TPLinker formulates joint\nextraction as a token pair linking problem and introduces a novel handshaking\ntagging scheme that aligns the boundary tokens of entity pairs under each\nrelation type. Experiment results show that TPLinker performs significantly\nbetter on overlapping and multiple relation extraction, and achieves\nstate-of-the-art performance on two public datasets.",
-    "url": "http://arxiv.org/abs/2010.13415v1",
-    "pdf_url": "http://arxiv.org/pdf/2010.13415v1",
-    "published_date": "2020-10-26",
-    "source": "arxiv",
-    "categories": [
-      "cs.CL"
-    ]
-  },
-  {
-    "paper_id": "2106.00218v2",
-    "title": "Discontinuous Named Entity Recognition as Maximal Clique Discovery",
-    "authors": [
-      "Yucheng Wang",
-      "Bowen Yu",
-      "Hongsong Zhu",
-      "Tingwen Liu",
-      "Nan Yu",
-      "Limin Sun"
-    ],
-    "abstract": "Named entity recognition (NER) remains challenging when entity mentions can\nbe discontinuous. Existing methods break the recognition process into several\nsequential steps. In training, they predict conditioned on the golden\nintermediate results, while at inference relying on the model output of the\nprevious steps, which introduces exposure bias. To solve this problem, we first\nconstruct a segment graph for each sentence, in which each node denotes a\nsegment (a continuous entity on its own, or a part of discontinuous entities),\nand an edge links two nodes that belong to the same entity. The nodes and edges\ncan be generated respectively in one stage with a grid tagging scheme and\nlearned jointly using a novel architecture named Mac. Then discontinuous NER\ncan be reformulated as a non-parametric process of discovering maximal cliques\nin the graph and concatenating the spans in each clique. Experiments on three\nbenchmarks show that our method outperforms the state-of-the-art (SOTA)\nresults, with up to 3.5 percentage points improvement on F1, and achieves 5x\nspeedup over the SOTA model.",
-    "url": "http://arxiv.org/abs/2106.00218v2",
-    "pdf_url": "http://arxiv.org/pdf/2106.00218v2",
-    "published_date": "2021-06-01",
-    "source": "arxiv",
-    "categories": [
-      "cs.CL"
-    ]
-  },
-  {
-    "paper_id": "2106.08247v2",
-    "title": "Canonical-Correlation-Based Fast Feature Selection for Structural Health Monitoring",
-    "authors": [
-      "Sikai Zhang",
-      "Tingna Wang",
-      "Keith Worden",
-      "Limin Sun",
-      "Elizabeth J. Cross"
-    ],
-    "abstract": "Feature selection refers to the process of selecting useful features for\nmachine learning tasks, and it is also a key step for structural health\nmonitoring (SHM). This paper proposes a fast feature selection algorithm by\nefficiently computing the sum of squared canonical correlation coefficients\nbetween monitored features and target variables of interest in greedy search.\nThe proposed algorithm is applied to both synthetic and real datasets to\nillustrate its advantages in terms of computational speed, general\nclassification and regression tasks, as well as damage-sensitive feature\nselection tasks. Furthermore, the performance of the proposed algorithm is\nevaluated under varying environmental conditions and on an edge computing\ndevice to investigate its applicability in real-world SHM scenarios. The\nresults show that the proposed algorithm can successfully select useful\nfeatures with extraordinarily fast computational speed, which implies that the\nproposed algorithm has great potential where features need to be selected and\nupdated online frequently, or where devices have limited computing capability.",
-    "url": "http://arxiv.org/abs/2106.08247v2",
-    "pdf_url": "http://arxiv.org/pdf/2106.08247v2",
-    "published_date": "2021-06-15",
-    "source": "arxiv",
-    "categories": [
-      "stat.ML",
-      "cs.LG"
-    ]
-  },
-  {
-    "paper_id": "2107.09856v2",
-    "title": "Firmware Re-hosting Through Static Binary-level Porting",
-    "authors": [
-      "Mingfeng Xin",
-      "Hui Wen",
-      "Liting Deng",
-      "Hong Li",
-      "Qiang Li",
-      "Limin Sun"
-    ],
-    "abstract": "The rapid growth of the Industrial Internet of Things (IIoT) has brought\nembedded systems into focus as major targets for both security analysts and\nmalicious adversaries. Due to the non-standard hardware and diverse software,\nembedded devices present unique challenges to security analysts for the\naccurate analysis of firmware binaries. The diversity in hardware components\nand tight coupling between firmware and hardware makes it hard to perform\ndynamic analysis, which must have the ability to execute firmware code in\nvirtualized environments. However, emulating the large expanse of hardware\nperipherals makes analysts have to frequently modify the emulator for executing\nvarious firmware code in different virtualized environments, greatly limiting\nthe ability of security analysis.\n  In this work, we explore the problem of firmware re-hosting related to the\nreal-time operating system (RTOS). Specifically, developers create a Board\nSupport Package (BSP) and develop device drivers to make that RTOS run on their\nplatform. By providing high-level replacements for BSP routines and device\ndrivers, we can make the minimal modification of the firmware that is to be\nmigrated from its original hardware environment into a virtualized one. We show\nthat an approach capable of offering the ability to execute firmware at scale\nthrough patching firmware in an automated manner without modifying the existing\nemulators. Our approach, called static binary-level porting, first identifies\nthe BSP and device drivers in target firmware, then patches the firmware with\npre-built BSP routines and drivers that can be adapted to the existing\nemulators. Finally, we demonstrate the practicality of the proposed method on\nmultiple hardware platforms and firmware samples for security analysis. The\nresult shows that the approach is flexible enough to emulate firmware for\nvulnerability assessment and exploits development.",
-    "url": "http://arxiv.org/abs/2107.09856v2",
-    "pdf_url": "http://arxiv.org/pdf/2107.09856v2",
-    "published_date": "2021-07-21",
-    "source": "arxiv",
-    "categories": [
-      "cs.CR"
-    ]
-  },
-  {
-    "paper_id": "2109.12209v1",
-    "title": "Finding Taint-Style Vulnerabilities in Linux-based Embedded Firmware with SSE-based Alias Analysis",
-    "authors": [
-      "Kai Cheng",
-      "Tao Liu",
-      "Le Guan",
-      "Peng Liu",
-      "Hong Li",
-      "Hongsong Zhu",
-      "Limin Sun"
-    ],
-    "abstract": "Although the importance of using static analysis to detect taint-style\nvulnerabilities in Linux-based embedded firmware is widely recognized, existing\napproaches are plagued by three major limitations. (a) Approaches based on\nsymbolic execution may miss alias information and therefore suffer from a high\nfalse-negative rate. (b) Approaches based on VSA (value set analysis) often\nprovide an over-approximate pointer range. As a result, many false positives\ncould be produced. (c) Existing work for detecting taint-style vulnerability\ndoes not consider indirect call resolution, whereas indirect calls are\nfrequently used in Internet-facing embedded devices. As a result, many false\nnegatives could be produced. In this work, we propose a precise demand-driven\nflow-, context- and field-sensitive alias analysis approach. Based on this new\napproach, we also design a novel indirect call resolution scheme. Combined with\nsanitization rule checking, our solution discovers taint-style vulnerabilities\nby static taint analysis. We implemented our idea with a prototype called\nEmTaint and evaluated it against 35 real-world embedded firmware samples from\nsix popular vendors. EmTaint discovered at least 192 bugs, including 41 n-day\nbugs and 151 0-day bugs. At least 115 CVE/PSV numbers have been allocated from\na subset of the reported vulnerabilities at the time of writing. Compared to\nstate-of-the-art tools such as KARONTE and SaTC, EmTaint found significantly\nmore bugs on the same dataset in less time.",
-    "url": "http://arxiv.org/abs/2109.12209v1",
-    "pdf_url": "http://arxiv.org/pdf/2109.12209v1",
-    "published_date": "2021-09-24",
-    "source": "arxiv",
-    "categories": [
-      "cs.CR",
-      "cs.SE"
-    ]
-  },
-  {
-    "paper_id": "2207.07883v2",
-    "title": "Neural modal ordinary differential equations: Integrating physics-based modeling with neural ordinary differential equations for modeling high-dimensional monitored structures",
-    "authors": [
-      "Zhilu Lai",
-      "Wei Liu",
-      "Xudong Jian",
-      "Kiran Bacsa",
-      "Limin Sun",
-      "Eleni Chatzi"
-    ],
-    "abstract": "The order/dimension of models derived on the basis of data is commonly\nrestricted by the number of observations, or in the context of monitored\nsystems, sensing nodes. This is particularly true for structural systems (e.g.,\ncivil or mechanical structures), which are typically high-dimensional in\nnature. In the scope of physics-informed machine learning, this paper proposes\na framework -- termed Neural Modal ODEs -- to integrate physics-based modeling\nwith deep learning for modeling the dynamics of monitored and high-dimensional\nengineered systems. Neural Ordinary Differential Equations -- Neural ODEs are\nexploited as the deep learning operator. In this initiating exploration, we\nrestrict ourselves to linear or mildly nonlinear systems. We propose an\narchitecture that couples a dynamic version of variational autoencoders with\nphysics-informed Neural ODEs (Pi-Neural ODEs). An encoder, as a part of the\nautoencoder, learns the abstract mappings from the first few items of\nobservational data to the initial values of the latent variables, which drive\nthe learning of embedded dynamics via physics-informed Neural ODEs, imposing a\nmodal model structure on that latent space. The decoder of the proposed model\nadopts the eigenmodes derived from an eigen-analysis applied to the linearized\nportion of a physics-based model: a process implicitly carrying the spatial\nrelationship between degrees-of-freedom (DOFs). The framework is validated on a\nnumerical example, and an experimental dataset of a scaled cable-stayed bridge,\nwhere the learned hybrid model is shown to outperform a purely physics-based\napproach to modeling. We further show the functionality of the proposed scheme\nwithin the context of virtual sensing, i.e., the recovery of generalized\nresponse quantities in unmeasured DOFs from spatially sparse data.",
-    "url": "http://arxiv.org/abs/2207.07883v2",
-    "pdf_url": "http://arxiv.org/pdf/2207.07883v2",
-    "published_date": "2022-07-16",
-    "source": "arxiv",
-    "categories": [
-      "cs.LG",
-      "cs.CE",
-      "physics.data-an"
-    ]
-  },
-  {
-    "paper_id": "2210.14163v2",
-    "title": "Multi-Granularity Cross-Modality Representation Learning for Named Entity Recognition on Social Media",
-    "authors": [
-      "Peipei Liu",
-      "Gaosheng Wang",
-      "Hong Li",
-      "Jie Liu",
-      "Yimo Ren",
-      "Hongsong Zhu",
-      "Limin Sun"
-    ],
-    "abstract": "Named Entity Recognition (NER) on social media refers to discovering and\nclassifying entities from unstructured free-form content, and it plays an\nimportant role for various applications such as intention understanding and\nuser recommendation. With social media posts tending to be multimodal,\nMultimodal Named Entity Recognition (MNER) for the text with its accompanying\nimage is attracting more and more attention since some textual components can\nonly be understood in combination with visual information. However, there are\ntwo drawbacks in existing approaches: 1) Meanings of the text and its\naccompanying image do not match always, so the text information still plays a\nmajor role. However, social media posts are usually shorter and more informal\ncompared with other normal contents, which easily causes incomplete semantic\ndescription and the data sparsity problem. 2) Although the visual\nrepresentations of whole images or objects are already used, existing methods\nignore either fine-grained semantic correspondence between objects in images\nand words in text or the objective fact that there are misleading objects or no\nobjects in some images. In this work, we solve the above two problems by\nintroducing the multi-granularity cross-modality representation learning. To\nresolve the first problem, we enhance the representation by semantic\naugmentation for each word in text. As for the second issue, we perform the\ncross-modality semantic interaction between text and vision at the different\nvision granularity to get the most effective multimodal guidance representation\nfor every word. Experiments show that our proposed approach can achieve the\nSOTA or approximate SOTA performance on two benchmark datasets of tweets. The\ncode, data and the best performing models are available at\nhttps://github.com/LiuPeiP-CS/IIE4MNER",
-    "url": "http://arxiv.org/abs/2210.14163v2",
-    "pdf_url": "http://arxiv.org/pdf/2210.14163v2",
-    "published_date": "2022-10-19",
-    "source": "arxiv",
-    "categories": [
-      "cs.CV",
-      "cs.MM"
-    ]
-  },
-  {
-    "paper_id": "2210.15824v3",
-    "title": "Improving the Modality Representation with Multi-View Contrastive Learning for Multimodal Sentiment Analysis",
-    "authors": [
-      "Peipei Liu",
-      "Xin Zheng",
-      "Hong Li",
-      "Jie Liu",
-      "Yimo Ren",
-      "Hongsong Zhu",
-      "Limin Sun"
-    ],
-    "abstract": "Modality representation learning is an important problem for multimodal\nsentiment analysis (MSA), since the highly distinguishable representations can\ncontribute to improving the analysis effect. Previous works of MSA have usually\nfocused on multimodal fusion strategies, and the deep study of modal\nrepresentation learning was given less attention. Recently, contrastive\nlearning has been confirmed effective at endowing the learned representation\nwith stronger discriminate ability. Inspired by this, we explore the\nimprovement approaches of modality representation with contrastive learning in\nthis study. To this end, we devise a three-stages framework with multi-view\ncontrastive learning to refine representations for the specific objectives. At\nthe first stage, for the improvement of unimodal representations, we employ the\nsupervised contrastive learning to pull samples within the same class together\nwhile the other samples are pushed apart. At the second stage, a\nself-supervised contrastive learning is designed for the improvement of the\ndistilled unimodal representations after cross-modal interaction. At last, we\nleverage again the supervised contrastive learning to enhance the fused\nmultimodal representation. After all the contrast trainings, we next achieve\nthe classification task based on frozen representations. We conduct experiments\non three open datasets, and results show the advance of our model.",
-    "url": "http://arxiv.org/abs/2210.15824v3",
-    "pdf_url": "http://arxiv.org/pdf/2210.15824v3",
-    "published_date": "2022-10-28",
-    "source": "arxiv",
-    "categories": [
-      "cs.MM",
+      "cs.CL",
       "cs.AI"
     ]
   },
   {
-    "paper_id": "2302.04666v1",
-    "title": "Understand Code Style: Efficient CNN-based Compiler Optimization Recognition System",
+    "paper_id": "2407.16833v2",
+    "title": "Retrieval Augmented Generation or Long-Context LLMs? A Comprehensive Study and Hybrid Approach",
     "authors": [
-      "Shouguo Yang",
-      "Zhiqiang Shi",
-      "Guodong Zhang",
-      "Mingxuan Li",
-      "Yuan Ma",
-      "Limin Sun"
+      "Zhuowan Li",
+      "Cheng Li",
+      "Mingyang Zhang",
+      "Qiaozhu Mei",
+      "Michael Bendersky"
     ],
-    "abstract": "Compiler optimization level recognition can be applied to vulnerability\ndiscovery and binary analysis. Due to the exists of many different compilation\noptimization options, the difference in the contents of the binary file is very\ncomplicated. There are thousands of compiler optimization algorithms and\nmultiple different processor architectures, so it is very difficult to manually\nanalyze binary files and recognize its compiler optimization level with rules.\nThis paper first proposes a CNN-based compiler optimization level recognition\nmodel: BinEye. The system extracts semantic and structural differences and\nautomatically recognize the compiler optimization levels. The model is designed\nto be very suitable for binary file processing and is easy to understand. We\nbuilt a dataset containing 80,028 binary files for the model training and\ntesting. Our proposed model achieves an accuracy of over 97%. At the same time,\nBinEye is a fully CNN-based system and it has a faster forward calculation\nspeed, at least 8 times faster than the normal RNN-based model. Through our\nanalysis of the model output, we successfully found the difference in assembly\ncodes caused by the different compiler optimization level. This means that the\nmodel we proposed is interpretable. Based on our model, we propose a method to\nanalyze the code differences caused by different compiler optimization levels,\nwhich has great guiding significance for analyzing closed source compilers and\nbinary security analysis.",
-    "url": "http://arxiv.org/abs/2302.04666v1",
-    "pdf_url": "http://arxiv.org/pdf/2302.04666v1",
-    "published_date": "2023-01-18",
-    "source": "arxiv",
-    "categories": [
-      "cs.PL"
-    ]
-  },
-  {
-    "paper_id": "2305.08372v2",
-    "title": "Hierarchical Aligned Multimodal Learning for NER on Tweet Posts",
-    "authors": [
-      "Peipei Liu",
-      "Hong Li",
-      "Yimo Ren",
-      "Jie Liu",
-      "Shuaizong Si",
-      "Hongsong Zhu",
-      "Limin Sun"
-    ],
-    "abstract": "Mining structured knowledge from tweets using named entity recognition (NER)\ncan be beneficial for many down stream applications such as recommendation and\nintention understanding. With tweet posts tending to be multimodal, multimodal\nnamed entity recognition (MNER) has attracted more attention. In this paper, we\npropose a novel approach, which can dynamically align the image and text\nsequence and achieve the multi-level cross-modal learning to augment textual\nword representation for MNER improvement. To be specific, our framework can be\nsplit into three main stages: the first stage focuses on intra-modality\nrepresentation learning to derive the implicit global and local knowledge of\neach modality, the second evaluates the relevance between the text and its\naccompanying image and integrates different grained visual information based on\nthe relevance, the third enforces semantic refinement via iterative cross-modal\ninteractions and co-attention. We conduct experiments on two open datasets, and\nthe results and detailed analysis demonstrate the advantage of our model.",
-    "url": "http://arxiv.org/abs/2305.08372v2",
-    "pdf_url": "http://arxiv.org/pdf/2305.08372v2",
-    "published_date": "2023-05-15",
+    "abstract": "Retrieval Augmented Generation (RAG) has been a powerful tool for Large\nLanguage Models (LLMs) to efficiently process overly lengthy contexts. However,\nrecent LLMs like Gemini-1.5 and GPT-4 show exceptional capabilities to\nunderstand long contexts directly. We conduct a comprehensive comparison\nbetween RAG and long-context (LC) LLMs, aiming to leverage the strengths of\nboth. We benchmark RAG and LC across various public datasets using three latest\nLLMs. Results reveal that when resourced sufficiently, LC consistently\noutperforms RAG in terms of average performance. However, RAG's significantly\nlower cost remains a distinct advantage. Based on this observation, we propose\nSelf-Route, a simple yet effective method that routes queries to RAG or LC\nbased on model self-reflection. Self-Route significantly reduces the\ncomputation cost while maintaining a comparable performance to LC. Our findings\nprovide a guideline for long-context applications of LLMs using RAG and LC.",
+    "url": "http://arxiv.org/abs/2407.16833v2",
+    "pdf_url": "http://arxiv.org/pdf/2407.16833v2",
+    "published_date": "2024-07-23",
     "source": "arxiv",
     "categories": [
       "cs.CL",
-      "cs.MM"
-    ]
-  },
-  {
-    "paper_id": "2405.09112v1",
-    "title": "Enhancing Function Name Prediction using Votes-Based Name Tokenization and Multi-Task Learning",
-    "authors": [
-      "Xiaoling Zhang",
-      "Zhengzi Xu",
-      "Shouguo Yang",
-      "Zhi Li",
-      "Zhiqiang Shi",
-      "Limin Sun"
-    ],
-    "abstract": "Reverse engineers would acquire valuable insights from descriptive function\nnames, which are absent in publicly released binaries. Recent advances in\nbinary function name prediction using data-driven machine learning show\npromise. However, existing approaches encounter difficulties in capturing\nfunction semantics in diverse optimized binaries and fail to reserve the\nmeaning of labels in function names. We propose Epitome, a framework that\nenhances function name prediction using votes-based name tokenization and\nmulti-task learning, specifically tailored for different compilation\noptimization binaries. Epitome learns comprehensive function semantics by\npre-trained assembly language model and graph neural network, incorporating\nfunction semantics similarity prediction task, to maximize the similarity of\nfunction semantics in the context of different compilation optimization levels.\nIn addition, we present two data preprocessing methods to improve the\ncomprehensibility of function names. We evaluate the performance of Epitome\nusing 2,597,346 functions extracted from binaries compiled with 5 optimizations\n(O0-Os) for 4 architectures (x64, x86, ARM, and MIPS). Epitome outperforms the\nstate-of-the-art function name prediction tool by up to 44.34%, 64.16%, and\n54.44% in precision, recall, and F1 score, while also exhibiting superior\ngeneralizability.",
-    "url": "http://arxiv.org/abs/2405.09112v1",
-    "pdf_url": "http://arxiv.org/pdf/2405.09112v1",
-    "published_date": "2024-05-15",
-    "source": "arxiv",
-    "categories": [
-      "cs.SE"
-    ]
-  },
-  {
-    "paper_id": "2406.01882v2",
-    "title": "HoneyGPT: Breaking the Trilemma in Terminal Honeypots with Large Language Model",
-    "authors": [
-      "Ziyang Wang",
-      "Jianzhou You",
-      "Haining Wang",
-      "Tianwei Yuan",
-      "Shichao Lv",
-      "Yang Wang",
-      "Limin Sun"
-    ],
-    "abstract": "Honeypots, as a strategic cyber-deception mechanism designed to emulate\nauthentic interactions and bait unauthorized entities, often struggle with\nbalancing flexibility, interaction depth, and deception. They typically fail to\nadapt to evolving attacker tactics, with limited engagement and information\ngathering. Fortunately, the emergent capabilities of large language models and\ninnovative prompt-based engineering offer a transformative shift in honeypot\ntechnologies. This paper introduces HoneyGPT, a pioneering shell honeypot\narchitecture based on ChatGPT, characterized by its cost-effectiveness and\nproactive engagement. In particular, we propose a structured prompt engineering\nframework that incorporates chain-of-thought tactics to improve long-term\nmemory and robust security analytics, enhancing deception and engagement. Our\nevaluation of HoneyGPT comprises a baseline comparison based on a collected\ndataset and a three-month field evaluation. The baseline comparison\ndemonstrates HoneyGPT's remarkable ability to strike a balance among\nflexibility, interaction depth, and deceptive capability. The field evaluation\nfurther validates HoneyGPT's superior performance in engaging attackers more\ndeeply and capturing a wider array of novel attack vectors.",
-    "url": "http://arxiv.org/abs/2406.01882v2",
-    "pdf_url": "http://arxiv.org/pdf/2406.01882v2",
-    "published_date": "2024-06-04",
-    "source": "arxiv",
-    "categories": [
-      "cs.CR",
       "cs.AI",
-      "cs.ET",
-      "cs.SE"
+      "cs.LG"
     ]
   },
   {
-    "paper_id": "2407.06853v1",
-    "title": "TimeTravel: Real-time Timing Drift Attack on System Time Using Acoustic Waves",
+    "paper_id": "2405.07437v2",
+    "title": "Evaluation of Retrieval-Augmented Generation: A Survey",
     "authors": [
-      "Jianshuo Liu",
-      "Hong Li",
-      "Haining Wang",
-      "Mengjie Sun",
-      "Hui Wen",
-      "Jinfa Wang",
-      "Limin Sun"
+      "Hao Yu",
+      "Aoran Gan",
+      "Kai Zhang",
+      "Shiwei Tong",
+      "Qi Liu",
+      "Zhaofeng Liu"
     ],
-    "abstract": "Real-time Clock (RTC) has been widely used in various real-time systems to\nprovide precise system time. In this paper, we reveal a new security\nvulnerability of the RTC circuit, where the internal storage time or timestamp\ncan be arbitrarily modified forward or backward. The security threat of dynamic\nmodifications of system time caused by this vulnerability is called TimeTravel.\nBased on acoustic resonance and piezoelectric effects, TimeTravel applies\nacoustic guide waves to the quartz crystal, thereby adjusting the\ncharacteristics of the oscillating signal transmitted into the RTC circuit. By\nmanipulating the parameters of acoustic waves, TimeTravel can accelerate or\ndecelerate the timing speed of system time at an adjustable rate, resulting in\nthe relative drift of the timing, which can pose serious safety threats. To\nassess the severity of TimeTravel, we examine nine modules and two commercial\ndevices under the RTC circuit. The experimental results show that TimeTravel\ncan drift system time forward and backward at a chosen speed with a maximum 93%\naccuracy. Our analysis further shows that TimeTravel can maintain an attack\nsuccess rate of no less than 77% under environments with typical obstacle\nitems.",
-    "url": "http://arxiv.org/abs/2407.06853v1",
-    "pdf_url": "http://arxiv.org/pdf/2407.06853v1",
-    "published_date": "2024-07-09",
+    "abstract": "Retrieval-Augmented Generation (RAG) has recently gained traction in natural\nlanguage processing. Numerous studies and real-world applications are\nleveraging its ability to enhance generative models through external\ninformation retrieval. Evaluating these RAG systems, however, poses unique\nchallenges due to their hybrid structure and reliance on dynamic knowledge\nsources. To better understand these challenges, we conduct A Unified Evaluation\nProcess of RAG (Auepora) and aim to provide a comprehensive overview of the\nevaluation and benchmarks of RAG systems. Specifically, we examine and compare\nseveral quantifiable metrics of the Retrieval and Generation components, such\nas relevance, accuracy, and faithfulness, within the current RAG benchmarks,\nencompassing the possible output and ground truth pairs. We then analyze the\nvarious datasets and metrics, discuss the limitations of current benchmarks,\nand suggest potential directions to advance the field of RAG benchmarks.",
+    "url": "http://arxiv.org/abs/2405.07437v2",
+    "pdf_url": "http://arxiv.org/pdf/2405.07437v2",
+    "published_date": "2024-05-13",
     "source": "arxiv",
     "categories": [
-      "cs.CR"
+      "cs.CL",
+      "cs.AI"
+    ]
+  },
+  {
+    "paper_id": "2412.02592v1",
+    "title": "OCR Hinders RAG: Evaluating the Cascading Impact of OCR on Retrieval-Augmented Generation",
+    "authors": [
+      "Junyuan Zhang",
+      "Qintong Zhang",
+      "Bin Wang",
+      "Linke Ouyang",
+      "Zichen Wen",
+      "Ying Li",
+      "Ka-Ho Chow",
+      "Conghui He",
+      "Wentao Zhang"
+    ],
+    "abstract": "Retrieval-augmented Generation (RAG) enhances Large Language Models (LLMs) by\nintegrating external knowledge to reduce hallucinations and incorporate\nup-to-date information without retraining. As an essential part of RAG,\nexternal knowledge bases are commonly built by extracting structured data from\nunstructured PDF documents using Optical Character Recognition (OCR). However,\ngiven the imperfect prediction of OCR and the inherent non-uniform\nrepresentation of structured data, knowledge bases inevitably contain various\nOCR noises. In this paper, we introduce OHRBench, the first benchmark for\nunderstanding the cascading impact of OCR on RAG systems. OHRBench includes 350\ncarefully selected unstructured PDF documents from six real-world RAG\napplication domains, along with Q&As derived from multimodal elements in\ndocuments, challenging existing OCR solutions used for RAG To better understand\nOCR's impact on RAG systems, we identify two primary types of OCR noise:\nSemantic Noise and Formatting Noise and apply perturbation to generate a set of\nstructured data with varying degrees of each OCR noise. Using OHRBench, we\nfirst conduct a comprehensive evaluation of current OCR solutions and reveal\nthat none is competent for constructing high-quality knowledge bases for RAG\nsystems. We then systematically evaluate the impact of these two noise types\nand demonstrate the vulnerability of RAG systems. Furthermore, we discuss the\npotential of employing Vision-Language Models (VLMs) without OCR in RAG\nsystems. Code: https://github.com/opendatalab/OHR-Bench",
+    "url": "http://arxiv.org/abs/2412.02592v1",
+    "pdf_url": "http://arxiv.org/pdf/2412.02592v1",
+    "published_date": "2024-12-03",
+    "source": "arxiv",
+    "categories": [
+      "cs.CV"
+    ]
+  },
+  {
+    "paper_id": "2502.13465v1",
+    "title": "HawkBench: Investigating Resilience of RAG Methods on Stratified Information-Seeking Tasks",
+    "authors": [
+      "Hongjin Qian",
+      "Zheng Liu",
+      "Chao Gao",
+      "Yankai Wang",
+      "Defu Lian",
+      "Zhicheng Dou"
+    ],
+    "abstract": "In real-world information-seeking scenarios, users have dynamic and diverse\nneeds, requiring RAG systems to demonstrate adaptable resilience. To\ncomprehensively evaluate the resilience of current RAG methods, we introduce\nHawkBench, a human-labeled, multi-domain benchmark designed to rigorously\nassess RAG performance across categorized task types. By stratifying tasks\nbased on information-seeking behaviors, HawkBench provides a systematic\nevaluation of how well RAG systems adapt to diverse user needs.\n  Unlike existing benchmarks, which focus primarily on specific task types\n(mostly factoid queries) and rely on varying knowledge bases, HawkBench offers:\n(1) systematic task stratification to cover a broad range of query types,\nincluding both factoid and rationale queries, (2) integration of multi-domain\ncorpora across all task types to mitigate corpus bias, and (3) rigorous\nannotation for high-quality evaluation.\n  HawkBench includes 1,600 high-quality test samples, evenly distributed across\ndomains and task types. Using this benchmark, we evaluate representative RAG\nmethods, analyzing their performance in terms of answer quality and response\nlatency. Our findings highlight the need for dynamic task strategies that\nintegrate decision-making, query interpretation, and global knowledge\nunderstanding to improve RAG generalizability. We believe HawkBench serves as a\npivotal benchmark for advancing the resilience of RAG methods and their ability\nto achieve general-purpose information seeking.",
+    "url": "http://arxiv.org/abs/2502.13465v1",
+    "pdf_url": "http://arxiv.org/pdf/2502.13465v1",
+    "published_date": "2025-02-19",
+    "source": "arxiv",
+    "categories": [
+      "cs.IR",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "paper_id": "2401.17043v3",
+    "title": "CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models",
+    "authors": [
+      "Yuanjie Lyu",
+      "Zhiyu Li",
+      "Simin Niu",
+      "Feiyu Xiong",
+      "Bo Tang",
+      "Wenjin Wang",
+      "Hao Wu",
+      "Huanyong Liu",
+      "Tong Xu",
+      "Enhong Chen"
+    ],
+    "abstract": "Retrieval-Augmented Generation (RAG) is a technique that enhances the\ncapabilities of large language models (LLMs) by incorporating external\nknowledge sources. This method addresses common LLM limitations, including\noutdated information and the tendency to produce inaccurate \"hallucinated\"\ncontent. However, the evaluation of RAG systems is challenging, as existing\nbenchmarks are limited in scope and diversity. Most of the current benchmarks\npredominantly assess question-answering applications, overlooking the broader\nspectrum of situations where RAG could prove advantageous. Moreover, they only\nevaluate the performance of the LLM component of the RAG pipeline in the\nexperiments, and neglect the influence of the retrieval component and the\nexternal knowledge database. To address these issues, this paper constructs a\nlarge-scale and more comprehensive benchmark, and evaluates all the components\nof RAG systems in various RAG application scenarios. Specifically, we have\ncategorized the range of RAG applications into four distinct types-Create,\nRead, Update, and Delete (CRUD), each representing a unique use case. \"Create\"\nrefers to scenarios requiring the generation of original, varied content.\n\"Read\" involves responding to intricate questions in knowledge-intensive\nsituations. \"Update\" focuses on revising and rectifying inaccuracies or\ninconsistencies in pre-existing texts. \"Delete\" pertains to the task of\nsummarizing extensive texts into more concise forms. For each of these CRUD\ncategories, we have developed comprehensive datasets to evaluate the\nperformance of RAG systems. We also analyze the effects of various components\nof the RAG system, such as the retriever, the context length, the knowledge\nbase construction, and the LLM. Finally, we provide useful insights for\noptimizing the RAG technology for different scenarios.",
+    "url": "http://arxiv.org/abs/2401.17043v3",
+    "pdf_url": "http://arxiv.org/pdf/2401.17043v3",
+    "published_date": "2024-01-30",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "paper_id": "2412.13018v2",
+    "title": "OmniEval: An Omnidirectional and Automatic RAG Evaluation Benchmark in Financial Domain",
+    "authors": [
+      "Shuting Wang",
+      "Jiejun Tan",
+      "Zhicheng Dou",
+      "Ji-Rong Wen"
+    ],
+    "abstract": "As a typical and practical application of Large Language Models (LLMs),\nRetrieval-Augmented Generation (RAG) techniques have gained extensive\nattention, particularly in vertical domains where LLMs may lack domain-specific\nknowledge. In this paper, we introduce an omnidirectional and automatic RAG\nbenchmark, OmniEval, in the financial domain. Our benchmark is characterized by\nits multi-dimensional evaluation framework, including (1) a matrix-based RAG\nscenario evaluation system that categorizes queries into five task classes and\n16 financial topics, leading to a structured assessment of diverse query\nscenarios; (2) a multi-dimensional evaluation data generation approach, which\ncombines GPT-4-based automatic generation and human annotation, achieving an\n87.47\\% acceptance ratio in human evaluations on generated instances; (3) a\nmulti-stage evaluation system that evaluates both retrieval and generation\nperformance, result in a comprehensive evaluation on the RAG pipeline; and (4)\nrobust evaluation metrics derived from rule-based and LLM-based ones, enhancing\nthe reliability of assessments through manual annotations and supervised\nfine-tuning of an LLM evaluator. Our experiments demonstrate the\ncomprehensiveness of OmniEval, which includes extensive test datasets and\nhighlights the performance variations of RAG systems across diverse topics and\ntasks, revealing significant opportunities for RAG models to improve their\ncapabilities in vertical domains. We open source the code of our benchmark in\n\\href{https://github.com/RUC-NLPIR/OmniEval}{https://github.com/RUC-NLPIR/OmniEval}.",
+    "url": "http://arxiv.org/abs/2412.13018v2",
+    "pdf_url": "http://arxiv.org/pdf/2412.13018v2",
+    "published_date": "2024-12-17",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "paper_id": "2409.15763v2",
+    "title": "IRSC: A Zero-shot Evaluation Benchmark for Information Retrieval through Semantic Comprehension in Retrieval-Augmented Generation Scenarios",
+    "authors": [
+      "Hai Lin",
+      "Shaoxiong Zhan",
+      "Junyou Su",
+      "Haitao Zheng",
+      "Hui Wang"
+    ],
+    "abstract": "In Retrieval-Augmented Generation (RAG) tasks using Large Language Models\n(LLMs), the quality of retrieved information is critical to the final output.\nThis paper introduces the IRSC benchmark for evaluating the performance of\nembedding models in multilingual RAG tasks. The benchmark encompasses five\nretrieval tasks: query retrieval, title retrieval, part-of-paragraph retrieval,\nkeyword retrieval, and summary retrieval. Our research addresses the current\nlack of comprehensive testing and effective comparison methods for embedding\nmodels in RAG scenarios. We introduced new metrics: the Similarity of Semantic\nComprehension Index (SSCI) and the Retrieval Capability Contest Index (RCCI),\nand evaluated models such as Snowflake-Arctic, BGE, GTE, and M3E. Our\ncontributions include: 1) the IRSC benchmark, 2) the SSCI and RCCI metrics, and\n3) insights into the cross-lingual limitations of embedding models. The IRSC\nbenchmark aims to enhance the understanding and development of accurate\nretrieval systems in RAG tasks. All code and datasets are available at:\nhttps://github.com/Jasaxion/IRSC_Benchmark",
+    "url": "http://arxiv.org/abs/2409.15763v2",
+    "pdf_url": "http://arxiv.org/pdf/2409.15763v2",
+    "published_date": "2024-09-24",
+    "source": "arxiv",
+    "categories": [
+      "cs.IR",
+      "cs.AI"
+    ]
+  },
+  {
+    "paper_id": "2501.13264v2",
+    "title": "RAG-Reward: Optimizing RAG with Reward Modeling and RLHF",
+    "authors": [
+      "Hanning Zhang",
+      "Juntong Song",
+      "Juno Zhu",
+      "Yuanhao Wu",
+      "Tong Zhang",
+      "Cheng Niu"
+    ],
+    "abstract": "Retrieval-augmented generation (RAG) enhances Large Language Models (LLMs)\nwith relevant and up-to-date knowledge, improving their ability to answer\nknowledge-intensive questions. It has been shown to enhance both generation\nquality and trustworthiness. While numerous works have focused on improving\nretrieval, generation, and evaluation, the role of reward models in\nreinforcement learning for optimizing RAG remains underexplored. In this paper,\nwe introduce \\textbf{RAG-Reward}, a framework designed to develop reward models\nto enable \\textit{hallucination-free, comprehensive, reliable, and efficient\nRAG}. We define four key metrics to assess generation quality and develop an\nautomated benchmarking pipeline to evaluate the outputs of multiple LLMs across\na variety of RAG scenarios. Using \\textbf{RAG-Reward}, we train reward models\nand apply {reinforcement learning with human feedback (RLHF)} to improve LLMs'\neffectiveness in RAG. Experimental results demonstrate that our reward model\nachieves state-of-the-art performance in automatic benchmarking and aligns\nclosely with human evaluations. Furthermore, the improved generation quality of\nthe trained policy model highlights the feasibility and efficiency of using\nRLHF to enhance RAG outputs.",
+    "url": "http://arxiv.org/abs/2501.13264v2",
+    "pdf_url": "http://arxiv.org/pdf/2501.13264v2",
+    "published_date": "2025-01-22",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "paper_id": "2410.12248v1",
+    "title": "CoFE-RAG: A Comprehensive Full-chain Evaluation Framework for Retrieval-Augmented Generation with Enhanced Data Diversity",
+    "authors": [
+      "Jintao Liu",
+      "Ruixue Ding",
+      "Linhao Zhang",
+      "Pengjun Xie",
+      "Fie Huang"
+    ],
+    "abstract": "Retrieval-Augmented Generation (RAG) aims to enhance large language models\n(LLMs) to generate more accurate and reliable answers with the help of the\nretrieved context from external knowledge sources, thereby reducing the\nincidence of hallucinations. Despite the advancements, evaluating these systems\nremains a crucial research area due to the following issues: (1) Limited data\ndiversity: The insufficient diversity of knowledge sources and query types\nconstrains the applicability of RAG systems; (2) Obscure problems location:\nExisting evaluation methods have difficulty in locating the stage of the RAG\npipeline where problems occur; (3) Unstable retrieval evaluation: These methods\noften fail to effectively assess retrieval performance, particularly when the\nchunking strategy changes. To tackle these challenges, we propose a\nComprehensive Full-chain Evaluation (CoFE-RAG) framework to facilitate thorough\nevaluation across the entire RAG pipeline, including chunking, retrieval,\nreranking, and generation. To effectively evaluate the first three phases, we\nintroduce multi-granularity keywords, including coarse-grained and fine-grained\nkeywords, to assess the retrieved context instead of relying on the annotation\nof golden chunks. Moreover, we release a holistic benchmark dataset tailored\nfor diverse data scenarios covering a wide range of document formats and query\ntypes. We demonstrate the utility of the CoFE-RAG framework by conducting\nexperiments to evaluate each stage of RAG systems. Our evaluation method\nprovides unique insights into the effectiveness of RAG systems in handling\ndiverse data scenarios, offering a more nuanced understanding of their\ncapabilities and limitations.",
+    "url": "http://arxiv.org/abs/2410.12248v1",
+    "pdf_url": "http://arxiv.org/pdf/2410.12248v1",
+    "published_date": "2024-10-16",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL"
     ]
   }
 ]
