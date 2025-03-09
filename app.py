@@ -19,7 +19,7 @@ st.title("AI Research Assistant")
 st.sidebar.title("Settings")
 
 # Select data source
-source = st.sidebar.selectbox("Choose Source", ["arxiv", "pubmed", "ssrn"], index=0)
+source = st.sidebar.selectbox("Choose Source", ["arXiv", "Pubmed", "SSRN"], index=0)
 
 # Set search parameters
 search_type = st.sidebar.radio(
@@ -60,7 +60,10 @@ with tab1:
     if search_button and query:
         try:
             with st.spinner("Searching for relevant papers..."):
-                # Detect and format author searches
+                # Initialize actual_query with the default value
+                actual_query = query
+
+                # Enhanced query processing for different search types
                 if search_type_hint == "Author":
                     # Format author search query properly
                     author_name = query
@@ -92,6 +95,43 @@ with tab1:
                     actual_query = f'ti:"{query}"'  # Wrap in quotes for exact title
                 elif search_type_hint == "Author" and not query.startswith("au:"):
                     actual_query = f'au:"{query}"'  # Format as author search
+                elif search_type_hint == "Topic/Concept":
+                    # New specialized handling for topic/concept searches
+                    st.info(f"Searching for papers about: {query}")
+
+                    # For concepts, enhance the query if it's short
+                    if len(query.split()) <= 3:
+                        # Try to search in both title and abstract for better topic coverage
+                        actual_query = f'ti:{query} OR abs:"{query}"'
+
+                    # For topic searches, crawl more papers to improve coverage
+                    try:
+                        from direct_crawler import crawl_arxiv
+
+                        output_dir = os.path.join(os.path.dirname(__file__), "data")
+                        with st.status("Finding papers on this topic...") as status:
+                            # Use more papers for topic searches
+                            topic_count = max(20, result_count * 3)
+                            count = crawl_arxiv(actual_query, topic_count, output_dir)
+
+                            if count > 0:
+                                status.update(
+                                    label=f"Found {count} papers on this topic!",
+                                    state="complete",
+                                )
+                                # Build index on these results
+                                with st.spinner(
+                                    "Building search index for found papers..."
+                                ):
+                                    embedding_manager = EmbeddingManager()
+                                    embedding_manager.build_faiss_index(source=source)
+                            else:
+                                status.update(
+                                    label="Trying alternative search methods...",
+                                    state="running",
+                                )
+                    except Exception as e:
+                        print(f"Error in topic search: {str(e)}")
 
                 # First try direct crawling for exact paper title
                 if search_type_hint == "Paper Title":
@@ -153,8 +193,130 @@ with tab1:
                             st.warning(f"Error processing a search result: {str(e)}")
                             continue
 
-                    # Special handling for author search results display
-                    if search_type_hint == "Author" and paper_results:
+                    # Special handling for topic/concept search results display
+                    if search_type_hint == "Topic/Concept" and paper_results:
+                        # Display a heading for topic results
+                        st.subheader(f"📚 Papers about '{query}'")
+
+                        # Add an explanation of the topic relevance
+                        st.info(
+                            f"Showing {len(paper_results)} papers relevant to this topic. Papers are ranked by relevance to your query."
+                        )
+
+                        # Display each paper
+                        for paper_id, paper_data in paper_results.items():
+                            st.subheader(paper_data["metadata"]["title"])
+                            st.write(
+                                f"Source: {paper_data['metadata']['source']} | [View Paper]({paper_data['metadata']['url']})"
+                            )
+
+                            # Fix for NaN in progress bar - handle empty lists and invalid values
+                            try:
+                                if (
+                                    paper_data["scores"]
+                                    and len(paper_data["scores"]) > 0
+                                ):
+                                    # Filter out any non-numeric or NaN values
+                                    valid_scores = []
+                                    for score in paper_data["scores"]:
+                                        try:
+                                            score_value = float(score)
+                                            if not (
+                                                math.isnan(score_value)
+                                                or math.isinf(score_value)
+                                            ):
+                                                valid_scores.append(score_value)
+                                        except (ValueError, TypeError):
+                                            continue
+
+                                    if valid_scores:
+                                        avg_score = sum(valid_scores) / len(
+                                            valid_scores
+                                        )
+                                    else:
+                                        avg_score = 0.5  # Default when no valid scores
+                                else:
+                                    avg_score = 0.5  # Default when scores list is empty
+
+                                # Final safety check before displaying
+                                if (
+                                    not isinstance(avg_score, (int, float))
+                                    or math.isnan(avg_score)
+                                    or math.isinf(avg_score)
+                                ):
+                                    avg_score = 0.5
+
+                                # Ensure value is in [0.0, 1.0] range
+                                safe_score = max(0.0, min(float(avg_score), 1.0))
+                                st.progress(
+                                    safe_score,
+                                    text=f"Relevance Score: {safe_score:.2f}",
+                                )
+                            except Exception as e:
+                                # Fallback for any other error
+                                st.info(f"Could not display relevance score: {str(e)}")
+                                st.progress(0.5, text="Relevance Score: N/A")
+
+                            # Join chunks for this paper
+                            full_text = "\n\n".join(paper_data["chunks"])
+
+                            # FIX: Separate expanders for summary and key points
+                            summarizer = RecursiveSummarizer()
+
+                            # Summary expander
+                            with st.expander("View Summary"):
+                                with st.spinner("Generating summary..."):
+                                    summary = summarizer.recursive_summarize(
+                                        full_text, query
+                                    )
+                                    st.write(summary)
+
+                            # Key points expander (now at same level, not nested)
+                            with st.expander("View Key Points"):
+                                with st.spinner("Extracting key points..."):
+                                    key_points = summarizer.extract_key_points(summary)
+                                    st.write(key_points)
+
+                            # Original text expander
+                            with st.expander("View Original Text"):
+                                st.write(full_text)
+
+                            st.divider()
+
+                        # Add a topic summary at the end
+                        if len(paper_results) >= 2:
+                            st.subheader("Topic Summary")
+                            with st.spinner("Generating topic overview..."):
+                                try:
+                                    summarizer = RecursiveSummarizer()
+                                    # Collect titles and abstracts
+                                    topic_content = []
+                                    for paper_id, paper_data in list(
+                                        paper_results.items()
+                                    )[
+                                        :5
+                                    ]:  # Use top 5 papers
+                                        title = paper_data["metadata"]["title"]
+                                        chunks = paper_data["chunks"]
+                                        abstract = (
+                                            chunks[0] if chunks else ""
+                                        )  # First chunk is typically the abstract
+                                        topic_content.append(
+                                            f"Title: {title}\nAbstract: {abstract[:500]}..."
+                                        )
+
+                                    # Generate a topic summary
+                                    topic_text = "\n\n".join(topic_content)
+                                    prompt = f"Based on these papers about '{query}', provide a brief overview of this research topic:"
+                                    topic_summary = summarizer.answer_specific_question(
+                                        topic_text, prompt
+                                    )
+                                    st.write(topic_summary)
+                                except Exception as e:
+                                    st.error(
+                                        f"Error generating topic summary: {str(e)}"
+                                    )
+                    elif search_type_hint == "Author" and paper_results:
                         author_name = query.replace("au:", "").replace('"', "")
 
                         # Display a heading for author results

@@ -86,6 +86,37 @@ def crawl_arxiv(query, max_results=100, output_dir="data"):
             query_formats.append(f'au:"{last_name}"')
             query_formats.append(f"au:{last_name}")
 
+    # Detect if this is a topic/concept search (not author, not title)
+    is_topic_search = not is_author_search and not is_title_search
+
+    # For topic searches, optimize the query formats
+    if is_topic_search:
+        # Prepare multiple query formats for better topic coverage
+        search_terms = search_term.split()
+
+        # Start with specific query formats for better relevance
+        query_formats = [
+            query,  # Original query
+            f'"{search_term}"',  # Exact phrase
+            f"abs:{search_term}",  # Abstract contains terms
+        ]
+
+        # If it's a multi-word topic, add combinations
+        if len(search_terms) > 1:
+            # Add title + abstract combinations for better coverage
+            query_formats.append(f'ti:"{search_term}" OR abs:"{search_term}"')
+
+            # Add AND format to require all terms
+            and_query = " AND ".join([f"({term})" for term in search_terms])
+            query_formats.append(and_query)
+
+            # For topics, use a lower max_retries to avoid API timeouts
+            client = arxiv.Client(
+                page_size=100,
+                delay_seconds=1,
+                num_retries=3,
+            )
+
     # Try each query format until we get results
     papers = []
     used_query = ""
@@ -225,6 +256,11 @@ def crawl_arxiv(query, max_results=100, output_dir="data"):
         if verified_papers:
             papers = verified_papers
             print(f"Filtered to {len(papers)} papers by author: {search_term}")
+
+    # For topic searches, prioritize papers with most recent or most cited
+    if is_topic_search and len(papers) > max_results:
+        # Sort papers by date (newest first) as a simple proxy for relevance
+        papers.sort(key=lambda p: p.get("published_date", ""), reverse=True)
 
     # Save papers to JSON file if any were found
     if papers:
