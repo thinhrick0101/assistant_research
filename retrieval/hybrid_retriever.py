@@ -113,6 +113,26 @@ class HybridRetriever:
                     search_term = search_term[1:-1]
                 break
 
+        # Try to load original papers for metadata matching - initialize paper_data here
+        paper_data = None
+        if is_author_search:  # Only load for author searches
+            paper_data_file = os.path.join(
+                os.path.dirname(os.path.dirname(self.index_dir)),
+                "data",
+                f"{self.source.lower()}_spider_papers.json",  # Force lowercase
+            )
+
+            try:
+                if os.path.exists(paper_data_file):
+                    with open(paper_data_file, "r", encoding="utf-8") as f:
+                        paper_data = json.load(f)
+                    print(f"Loaded {len(paper_data)} papers for author matching")
+                else:
+                    print(f"Paper data file not found: {paper_data_file}")
+            except Exception as e:
+                print(f"Could not load paper data for author matching: {e}")
+                paper_data = None  # Ensure it's None if there's an error
+
         # Special handling for topic/concept searches
         if is_topic_search:
             # Get embedding with optimized query
@@ -152,6 +172,7 @@ class HybridRetriever:
             return results[:top_k]
 
         # Improved author search - find exact author matches in metadata
+        # Now check if paper_data exists before using it
         if is_author_search and paper_data:
             author_matches = []
             author_name_parts = search_term.lower().split()
