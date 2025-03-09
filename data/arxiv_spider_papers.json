@@ -1,0 +1,196 @@
+[
+  {
+    "paper_id": "1706.03762v7",
+    "title": "Attention Is All You Need",
+    "authors": [
+      "Ashish Vaswani",
+      "Noam Shazeer",
+      "Niki Parmar",
+      "Jakob Uszkoreit",
+      "Llion Jones",
+      "Aidan N. Gomez",
+      "Lukasz Kaiser",
+      "Illia Polosukhin"
+    ],
+    "abstract": "The dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks in an encoder-decoder configuration. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer, based\nsolely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to be\nsuperior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014\nEnglish-to-German translation task, improving over the existing best results,\nincluding ensembles by over 2 BLEU. On the WMT 2014 English-to-French\ntranslation task, our model establishes a new single-model state-of-the-art\nBLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction\nof the training costs of the best models from the literature. We show that the\nTransformer generalizes well to other tasks by applying it successfully to\nEnglish constituency parsing both with large and limited training data.",
+    "url": "http://arxiv.org/abs/1706.03762v7",
+    "pdf_url": "http://arxiv.org/pdf/1706.03762v7",
+    "published_date": "2017-06-12",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL",
+      "cs.LG"
+    ]
+  },
+  {
+    "paper_id": "2104.04692v3",
+    "title": "Not All Attention Is All You Need",
+    "authors": [
+      "Hongqiu Wu",
+      "Hai Zhao",
+      "Min Zhang"
+    ],
+    "abstract": "Beyond the success story of pre-trained language models (PrLMs) in recent\nnatural language processing, they are susceptible to over-fitting due to\nunusual large model size. To this end, dropout serves as a therapy. However,\nexisting methods like random-based, knowledge-based and search-based dropout\nare more general but less effective onto self-attention based models, which are\nbroadly chosen as the fundamental architecture of PrLMs. In this paper, we\npropose a novel dropout method named AttendOut to let self-attention empowered\nPrLMs capable of more robust task-specific tuning. We demonstrate that\nstate-of-the-art models with elaborate training design may achieve much\nstronger results. We verify the universality of our approach on extensive\nnatural language processing tasks.",
+    "url": "http://arxiv.org/abs/2104.04692v3",
+    "pdf_url": "http://arxiv.org/pdf/2104.04692v3",
+    "published_date": "2021-04-10",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "paper_id": "2501.05730v1",
+    "title": "Element-wise Attention Is All You Need",
+    "authors": [
+      "Guoxin Feng"
+    ],
+    "abstract": "The self-attention (SA) mechanism has demonstrated superior performance\nacross various domains, yet it suffers from substantial complexity during both\ntraining and inference. The next-generation architecture, aiming at retaining\nthe competitive performance of SA while achieving low-cost inference and\nefficient long-sequence training, primarily focuses on three approaches: linear\nattention, linear RNNs, and state space models. Although these approaches\nachieve reduced complexity than SA, they all have built-in performance\ndegradation factors, such as diminished “spikiness” and compression of\nhistorical information. In contrast to these approaches, we propose a novel\nelement-wise attention mechanism, which uses the element-wise squared Euclidean\ndistance, instead of the dot product operation, to compute similarity and\napproximates the quadratic complexity term $\\exp(q_{ic}k_{jc})$ with a Taylor\npolynomial. This design achieves remarkable efficiency: during training, the\nelement-wise attention has a complexity of $\\mathcal{O}(tLD)$, making\nlong-sequence training both computationally and memory efficient, where $L$ is\nthe sequence length, $D$ is the feature dimension, and $t$ is the highest order\nof the polynomial; during inference, it can be reformulated as recurrent neural\nnetworks, achieving a inference complexity of $\\mathcal{O}(tD)$. Furthermore,\nthe element-wise attention circumvents the performance degradation factors\npresent in these approaches and achieves performance comparable to SA in both\ncausal and non-causal forms.",
+    "url": "http://arxiv.org/abs/2501.05730v1",
+    "pdf_url": "http://arxiv.org/pdf/2501.05730v1",
+    "published_date": "2025-01-10",
+    "source": "arxiv",
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  },
+  {
+    "paper_id": "2501.06425v2",
+    "title": "Tensor Product Attention Is All You Need",
+    "authors": [
+      "Yifan Zhang",
+      "Yifeng Liu",
+      "Huizhuo Yuan",
+      "Zhen Qin",
+      "Yang Yuan",
+      "Quanquan Gu",
+      "Andrew Chi-Chih Yao"
+    ],
+    "abstract": "Scaling language models to handle longer input sequences typically\nnecessitates large key-value (KV) caches, resulting in substantial memory\noverhead during inference. In this paper, we propose Tensor Product Attention\n(TPA), a novel attention mechanism that uses tensor decompositions to represent\nqueries, keys, and values compactly, significantly shrinking KV cache size at\ninference time. By factorizing these representations into contextual low-rank\ncomponents (contextual factorization) and seamlessly integrating with RoPE, TPA\nachieves improved model quality alongside memory efficiency. Based on TPA, we\nintroduce the Tensor ProducT ATTenTion Transformer (T6), a new model\narchitecture for sequence modeling. Through extensive empirical evaluation of\nlanguage modeling tasks, we demonstrate that T6 exceeds the performance of\nstandard Transformer baselines including MHA, MQA, GQA, and MLA across various\nmetrics, including perplexity and a range of renowned evaluation benchmarks.\nNotably, TPA's memory efficiency enables the processing of significantly longer\nsequences under fixed resource constraints, addressing a critical scalability\nchallenge in modern language models. The code is available at\nhttps://github.com/tensorgi/T6.",
+    "url": "http://arxiv.org/abs/2501.06425v2",
+    "pdf_url": "http://arxiv.org/pdf/2501.06425v2",
+    "published_date": "2025-01-11",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.LG"
+    ]
+  },
+  {
+    "paper_id": "1910.14537v3",
+    "title": "Attention Is All You Need for Chinese Word Segmentation",
+    "authors": [
+      "Sufeng Duan",
+      "Hai Zhao"
+    ],
+    "abstract": "Taking greedy decoding algorithm as it should be, this work focuses on\nfurther strengthening the model itself for Chinese word segmentation (CWS),\nwhich results in an even more fast and more accurate CWS model. Our model\nconsists of an attention only stacked encoder and a light enough decoder for\nthe greedy segmentation plus two highway connections for smoother training, in\nwhich the encoder is composed of a newly proposed Transformer variant,\nGaussian-masked Directional (GD) Transformer, and a biaffine attention scorer.\nWith the effective encoder design, our model only needs to take unigram\nfeatures for scoring. Our model is evaluated on SIGHAN Bakeoff benchmark\ndatasets. The experimental results show that with the highest segmentation\nspeed, the proposed model achieves new state-of-the-art or comparable\nperformance against strong baselines in terms of strict closed test setting.",
+    "url": "http://arxiv.org/abs/1910.14537v3",
+    "pdf_url": "http://arxiv.org/pdf/1910.14537v3",
+    "published_date": "2019-10-31",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "paper_id": "2010.13154v2",
+    "title": "Attention is All You Need in Speech Separation",
+    "authors": [
+      "Cem Subakan",
+      "Mirco Ravanelli",
+      "Samuele Cornell",
+      "Mirko Bronzi",
+      "Jianyuan Zhong"
+    ],
+    "abstract": "Recurrent Neural Networks (RNNs) have long been the dominant architecture in\nsequence-to-sequence learning. RNNs, however, are inherently sequential models\nthat do not allow parallelization of their computations. Transformers are\nemerging as a natural alternative to standard RNNs, replacing recurrent\ncomputations with a multi-head attention mechanism. In this paper, we propose\nthe SepFormer, a novel RNN-free Transformer-based neural network for speech\nseparation. The SepFormer learns short and long-term dependencies with a\nmulti-scale approach that employs transformers. The proposed model achieves\nstate-of-the-art (SOTA) performance on the standard WSJ0-2/3mix datasets. It\nreaches an SI-SNRi of 22.3 dB on WSJ0-2mix and an SI-SNRi of 19.5 dB on\nWSJ0-3mix. The SepFormer inherits the parallelization advantages of\nTransformers and achieves a competitive performance even when downsampling the\nencoded representation by a factor of 8. It is thus significantly faster and it\nis less memory-demanding than the latest speech separation systems with\ncomparable performance.",
+    "url": "http://arxiv.org/abs/2010.13154v2",
+    "pdf_url": "http://arxiv.org/pdf/2010.13154v2",
+    "published_date": "2020-10-25",
+    "source": "arxiv",
+    "categories": [
+      "eess.AS",
+      "cs.LG",
+      "cs.SD",
+      "eess.SP"
+    ]
+  },
+  {
+    "paper_id": "2306.01926v1",
+    "title": "RITA: Group Attention is All You Need for Timeseries Analytics",
+    "authors": [
+      "Jiaming Liang",
+      "Lei Cao",
+      "Samuel Madden",
+      "Zachary Ives",
+      "Guoliang Li"
+    ],
+    "abstract": "Timeseries analytics is of great importance in many real-world applications.\nRecently, the Transformer model, popular in natural language processing, has\nbeen leveraged to learn high quality feature embeddings from timeseries, core\nto the performance of various timeseries analytics tasks. However, the\nquadratic time and space complexities limit Transformers' scalability,\nespecially for long timeseries. To address these issues, we develop a\ntimeseries analytics tool, RITA, which uses a novel attention mechanism, named\ngroup attention, to address this scalability issue. Group attention dynamically\nclusters the objects based on their similarity into a small number of groups\nand approximately computes the attention at the coarse group granularity. It\nthus significantly reduces the time and space complexity, yet provides a\ntheoretical guarantee on the quality of the computed attention. The dynamic\nscheduler of RITA continuously adapts the number of groups and the batch size\nin the training process, ensuring group attention always uses the fewest groups\nneeded to meet the approximation quality requirement. Extensive experiments on\nvarious timeseries datasets and analytics tasks demonstrate that RITA\noutperforms the state-of-the-art in accuracy and is significantly faster --\nwith speedups of up to 63X.",
+    "url": "http://arxiv.org/abs/2306.01926v1",
+    "pdf_url": "http://arxiv.org/pdf/2306.01926v1",
+    "published_date": "2023-06-02",
+    "source": "arxiv",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.DB"
+    ]
+  },
+  {
+    "paper_id": "2309.13504v3",
+    "title": "Attention Is All You Need For Blind Room Volume Estimation",
+    "authors": [
+      "Chunxi Wang",
+      "Maoshen Jia",
+      "Meiran Li",
+      "Changchun Bao",
+      "Wenyu Jin"
+    ],
+    "abstract": "In recent years, dynamic parameterization of acoustic environments has raised\nincreasing attention in the field of audio processing. One of the key\nparameters that characterize the local room acoustics in isolation from\norientation and directivity of sources and receivers is the geometric room\nvolume. Convolutional neural networks (CNNs) have been widely selected as the\nmain models for conducting blind room acoustic parameter estimation, which aims\nto learn a direct mapping from audio spectrograms to corresponding labels. With\nthe recent trend of self-attention mechanisms, this paper introduces a purely\nattention-based model to blindly estimate room volumes based on single-channel\nnoisy speech signals. We demonstrate the feasibility of eliminating the\nreliance on CNN for this task and the proposed Transformer architecture takes\nGammatone magnitude spectral coefficients and phase spectrograms as inputs. To\nenhance the model performance given the task-specific dataset, cross-modality\ntransfer learning is also applied. Experimental results demonstrate that the\nproposed model outperforms traditional CNN models across a wide range of\nreal-world acoustics spaces, especially with the help of the dedicated\npretraining and data augmentation schemes.",
+    "url": "http://arxiv.org/abs/2309.13504v3",
+    "pdf_url": "http://arxiv.org/pdf/2309.13504v3",
+    "published_date": "2023-09-23",
+    "source": "arxiv",
+    "categories": [
+      "eess.AS",
+      "cs.SD"
+    ]
+  },
+  {
+    "paper_id": "2412.20875v1",
+    "title": "Attention Is All You Need For Mixture-of-Depths Routing",
+    "authors": [
+      "Advait Gadhikar",
+      "Souptik Kumar Majumdar",
+      "Niclas Popp",
+      "Piyapat Saranrittichai",
+      "Martin Rapp",
+      "Lukas Schott"
+    ],
+    "abstract": "Advancements in deep learning are driven by training models with increasingly\nlarger numbers of parameters, which in turn heightens the computational\ndemands. To address this issue, Mixture-of-Depths (MoD) models have been\nproposed to dynamically assign computations only to the most relevant parts of\nthe inputs, thereby enabling the deployment of large-parameter models with high\nefficiency during inference and training. These MoD models utilize a routing\nmechanism to determine which tokens should be processed by a layer, or skipped.\nHowever, conventional MoD models employ additional network layers specifically\nfor the routing which are difficult to train, and add complexity and deployment\noverhead to the model. In this paper, we introduce a novel attention-based\nrouting mechanism A-MoD that leverages the existing attention map of the\npreceding layer for routing decisions within the current layer. Compared to\nstandard routing, A-MoD allows for more efficient training as it introduces no\nadditional trainable parameters and can be easily adapted from pretrained\ntransformer models. Furthermore, it can increase the performance of the MoD\nmodel. For instance, we observe up to 2% higher accuracy on ImageNet compared\nto standard routing and isoFLOP ViT baselines. Furthermore, A-MoD improves the\nMoD training convergence, leading to up to 2x faster transfer learning.",
+    "url": "http://arxiv.org/abs/2412.20875v1",
+    "pdf_url": "http://arxiv.org/pdf/2412.20875v1",
+    "published_date": "2024-12-30",
+    "source": "arxiv",
+    "categories": [
+      "cs.CV"
+    ]
+  },
+  {
+    "paper_id": "2501.09166v1",
+    "title": "Attention is All You Need Until You Need Retention",
+    "authors": [
+      "M. Murat Yaslioglu"
+    ],
+    "abstract": "This work introduces a novel Retention Layer mechanism for Transformer based\narchitectures, addressing their inherent lack of intrinsic retention\ncapabilities. Unlike human cognition, which can encode and dynamically recall\nsymbolic templates, Generative Pretrained Transformers rely solely on fixed\npretrained weights and ephemeral context windows, limiting their adaptability.\nThe proposed Retention Layer incorporates a persistent memory module capable of\nreal time data population, dynamic recall, and guided output generation. This\nenhancement allows models to store, update, and reuse observed patterns across\nsessions, enabling incremental learning and bridging the gap between static\npretraining and dynamic, context sensitive adaptation. The Retention Layer\ndesign parallels social learning processes, encompassing attention, retention,\nreproduction, and motivation stages. Technically, it integrates a memory\nattention mechanism and episodic buffers to manage memory scalability, mitigate\noverfitting, and ensure efficient recall. Applications span adaptive personal\nassistants, real time fraud detection, autonomous robotics, content moderation,\nand healthcare diagnostics. In each domain, the retention mechanism enables\nsystems to learn incrementally, personalize outputs, and respond to evolving\nreal world challenges effectively. By emulating key aspects of human learning,\nthis retention enhanced architecture fosters a more fluid and responsive AI\nparadigm, paving the way for dynamic, session aware models that extend the\ncapabilities of traditional Transformers into domains requiring continual\nadaptation.",
+    "url": "http://arxiv.org/abs/2501.09166v1",
+    "pdf_url": "http://arxiv.org/pdf/2501.09166v1",
+    "published_date": "2025-01-15",
+    "source": "arxiv",
+    "categories": [
+      "cs.LG",
+      "cs.AI"
+    ]
+  }
+]

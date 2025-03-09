@@ -1,0 +1,250 @@
+"""Direct crawler for arXiv papers without using Scrapy."""
+
+import os
+import json
+import arxiv
+from datetime import datetime
+import time
+import re
+
+
+def crawl_arxiv(query, max_results=100, output_dir="data"):
+    """Crawl arXiv papers using the arXiv API directly."""
+    print(f"Crawling arXiv for '{query}', max results: {max_results}")
+
+    # Ensure output directory exists
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    # Check if this looks like a paper title (capitalized words, 4+ words)
+    words = query.split()
+    capitalized_words = [w for w in words if w[0].isupper() if len(w) > 1]
+    likely_title = len(words) >= 4 and len(capitalized_words) >= 1
+
+    # Try multiple query formats if needed
+    original_query = query
+    client = arxiv.Client(
+        page_size=100,
+        delay_seconds=3,
+        num_retries=5,
+    )
+
+    # Construct query formats based on the search
+    query_formats = []
+
+    # If this looks like a paper title, prioritize title search
+    if likely_title:
+        query_formats = [
+            f'ti:"{query}"',  # Exact title match (high priority)
+            f"ti:{query}",  # Title contains words
+            query,  # Original query
+            # Additional formats...
+        ]
+    else:
+        # Standard search formats
+        query_formats = [
+            query,  # Original query first
+            f'"{query}"',  # Exact phrase
+            f"ti:{query}",  # Title only
+            f"abs:{query}",  # Abstract only
+            f"cat:cs.* AND {query}",  # CS categories
+            f"all:{query}",  # All fields
+        ]
+
+    # Try each query format until we get results
+    papers = []
+    used_query = ""
+
+    for idx, current_query in enumerate(query_formats):
+        try:
+            print(f"Trying query format {idx+1}/{len(query_formats)}: {current_query}")
+
+            search = arxiv.Search(
+                query=current_query,
+                max_results=int(max_results),
+                sort_by=arxiv.SortCriterion.Relevance,
+            )
+
+            temp_papers = []
+            count = 0
+
+            # Process results
+            for result in client.results(search):
+                try:
+                    paper = process_paper(result)
+                    temp_papers.append(paper)
+                    count += 1
+                    if count % 10 == 0:
+                        print(f"Found {count} papers so far...")
+
+                    # Break if we have enough results
+                    if count >= int(max_results):
+                        break
+                except Exception as e:
+                    print(f"Error processing individual paper: {str(e)}")
+                    continue
+
+            # If we got any results, keep them and break the loop
+            if temp_papers:
+                papers = temp_papers
+                used_query = current_query
+                print(f"Found {len(papers)} papers with query format: {used_query}")
+                break
+            else:
+                print(f"No results for query format: {current_query}")
+
+        except Exception as e:
+            print(f"Error with query format {current_query}: {str(e)}")
+            continue
+
+    # If we still don't have papers, try browsing specific categories
+    if not papers:
+        try:
+            print("Attempting direct category browsing...")
+            # Try specifically browsing recent papers from relevant categories
+            categories = ["cs.AI", "cs.LG", "cs.CL", "cs.CV", "cs.NE", "stat.ML"]
+
+            for category in categories[:2]:  # Try just a couple categories to be faster
+                print(f"Browsing recent papers in {category}...")
+                search = arxiv.Search(
+                    query=f"cat:{category}",
+                    max_results=100,  # Search more papers
+                    sort_by=arxiv.SortCriterion.SubmittedDate,  # Get newest papers
+                )
+
+                # Look for relevant papers
+                temp_papers = []
+                for result in client.results(search):
+                    try:
+                        # Check if our query appears in the title or abstract
+                        if (
+                            query.lower() in result.title.lower()
+                            or query.lower() in result.summary.lower()
+                        ):
+                            paper = process_paper(result)
+                            temp_papers.append(paper)
+                            if len(temp_papers) >= int(max_results):
+                                break
+                    except Exception as e:
+                        print(f"Error processing paper in category search: {str(e)}")
+                        continue
+
+                if temp_papers:
+                    papers = temp_papers
+                    print(f"Found {len(papers)} relevant papers in category {category}")
+                    break
+        except Exception as e:
+            print(f"Error in category browsing: {str(e)}")
+
+    # If still no papers, try explicit search for famous papers
+    if not papers and likely_title:
+        try:
+            print("Trying direct search for the paper...")
+            # Direct search for famous papers by ID (for papers we know should exist)
+            known_papers = {
+                "attention is all you need": "1706.03762",
+                "bert": "1810.04805",
+                "gpt": "2005.14165",
+                "transformers": "1706.03762",
+            }
+
+            # Check if we can find a match for a known paper
+            paper_id = None
+            for title, pid in known_papers.items():
+                if title.lower() in query.lower():
+                    paper_id = pid
+                    break
+
+            if paper_id:
+                try:
+                    print(f"Found known paper ID: {paper_id}")
+                    search = arxiv.Search(id_list=[paper_id])
+                    result = next(client.results(search))
+                    papers = [process_paper(result)]
+                except Exception as e:
+                    print(f"Error retrieving known paper: {str(e)}")
+
+        except Exception as e:
+            print(f"Error in direct paper search: {str(e)}")
+
+    # Save papers to JSON file if any were found
+    if papers:
+        output_file = os.path.join(output_dir, "arxiv_spider_papers.json")
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(papers, f, ensure_ascii=False, indent=2)
+        print(f"Saved {len(papers)} papers to {output_file}")
+
+        # Print paper titles for confirmation
+        print("\nPaper titles found:")
+        for i, paper in enumerate(papers[:5]):  # Print first 5 papers
+            print(f"{i+1}. {paper['title']}")
+        if len(papers) > 5:
+            print(f"...and {len(papers) - 5} more papers")
+
+        return len(papers)
+    else:
+        print("No papers were found for the query despite multiple attempts.")
+        return 0
+
+
+def process_paper(result):
+    """Process a paper from arXiv API result with improved error handling"""
+    try:
+        # Get categories - handle different formats the API might return
+        categories = []
+        if hasattr(result, "categories"):
+            if isinstance(result.categories, list):
+                # If categories is already a list of strings
+                for cat in result.categories:
+                    if isinstance(cat, str):
+                        categories.append(cat)
+                    elif hasattr(cat, "term"):
+                        categories.append(cat.term)
+            elif isinstance(result.categories, str):
+                # If categories is a single string
+                categories = [result.categories]
+
+        return {
+            "paper_id": result.entry_id.split("/")[-1],
+            "title": result.title,
+            "authors": [author.name for author in result.authors],
+            "abstract": result.summary,
+            "url": result.entry_id,
+            "pdf_url": result.pdf_url,
+            "published_date": (
+                result.published.strftime("%Y-%m-%d") if result.published else ""
+            ),
+            "source": "arxiv",
+            "categories": categories,
+        }
+    except Exception as e:
+        print(f"Error in process_paper: {str(e)}")
+        # Provide a minimal valid paper structure in case of error
+        return {
+            "paper_id": "unknown",
+            "title": getattr(result, "title", "Unknown Title"),
+            "authors": [],
+            "abstract": getattr(result, "summary", "No abstract available"),
+            "url": getattr(result, "entry_id", ""),
+            "pdf_url": getattr(result, "pdf_url", ""),
+            "published_date": "",
+            "source": "arxiv",
+            "categories": [],
+        }
+
+
+if __name__ == "__main__":
+    import sys
+
+    # Default parameters
+    query = "machine learning"
+    max_results = 50
+
+    # Get parameters from command line arguments
+    if len(sys.argv) >= 2:
+        query = sys.argv[1]
+    if len(sys.argv) >= 3:
+        max_results = int(sys.argv[2])
+
+    # Execute crawling
+    crawl_arxiv(query, max_results)
