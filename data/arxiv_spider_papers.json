@@ -1,36 +1,39 @@
 [
   {
-    "paper_id": "2407.11005v2",
-    "title": "RAGBench: Explainable Benchmark for Retrieval-Augmented Generation Systems",
+    "paper_id": "2407.21059v1",
+    "title": "Modular RAG: Transforming RAG Systems into LEGO-like Reconfigurable Frameworks",
     "authors": [
-      "Robert Friel",
-      "Masha Belyi",
-      "Atindriyo Sanyal"
+      "Yunfan Gao",
+      "Yun Xiong",
+      "Meng Wang",
+      "Haofen Wang"
     ],
-    "abstract": "Retrieval-Augmented Generation (RAG) has become a standard architectural\npattern for incorporating domain-specific knowledge into user-facing chat\napplications powered by Large Language Models (LLMs). RAG systems are\ncharacterized by (1) a document retriever that queries a domain-specific corpus\nfor context information relevant to an input query, and (2) an LLM that\ngenerates a response based on the provided query and context. However,\ncomprehensive evaluation of RAG systems remains a challenge due to the lack of\nunified evaluation criteria and annotated datasets. In response, we introduce\nRAGBench: the first comprehensive, large-scale RAG benchmark dataset of 100k\nexamples. It covers five unique industry-specific domains and various RAG task\ntypes. RAGBench examples are sourced from industry corpora such as user\nmanuals, making it particularly relevant for industry applications. Further, we\nformalize the TRACe evaluation framework: a set of explainable and actionable\nRAG evaluation metrics applicable across all RAG domains. We release the\nlabeled dataset at https://huggingface.co/datasets/rungalileo/ragbench.\nRAGBench explainable labels facilitate holistic evaluation of RAG systems,\nenabling actionable feedback for continuous improvement of production\napplications. Thorough extensive benchmarking, we find that LLM-based RAG\nevaluation methods struggle to compete with a finetuned RoBERTa model on the\nRAG evaluation task. We identify areas where existing approaches fall short and\npropose the adoption of RAGBench with TRACe towards advancing the state of RAG\nevaluation systems.",
-    "url": "http://arxiv.org/abs/2407.11005v2",
-    "pdf_url": "http://arxiv.org/pdf/2407.11005v2",
-    "published_date": "2024-06-25",
+    "abstract": "Retrieval-augmented Generation (RAG) has markedly enhanced the capabilities\nof Large Language Models (LLMs) in tackling knowledge-intensive tasks. The\nincreasing demands of application scenarios have driven the evolution of RAG,\nleading to the integration of advanced retrievers, LLMs and other complementary\ntechnologies, which in turn has amplified the intricacy of RAG systems.\nHowever, the rapid advancements are outpacing the foundational RAG paradigm,\nwith many methods struggling to be unified under the process of\n\"retrieve-then-generate\". In this context, this paper examines the limitations\nof the existing RAG paradigm and introduces the modular RAG framework. By\ndecomposing complex RAG systems into independent modules and specialized\noperators, it facilitates a highly reconfigurable framework. Modular RAG\ntranscends the traditional linear architecture, embracing a more advanced\ndesign that integrates routing, scheduling, and fusion mechanisms. Drawing on\nextensive research, this paper further identifies prevalent RAG\npatterns-linear, conditional, branching, and looping-and offers a comprehensive\nanalysis of their respective implementation nuances. Modular RAG presents\ninnovative opportunities for the conceptualization and deployment of RAG\nsystems. Finally, the paper explores the potential emergence of new operators\nand paradigms, establishing a solid theoretical foundation and a practical\nroadmap for the continued evolution and practical deployment of RAG\ntechnologies.",
+    "url": "http://arxiv.org/abs/2407.21059v1",
+    "pdf_url": "http://arxiv.org/pdf/2407.21059v1",
+    "published_date": "2024-07-26",
     "source": "arxiv",
     "categories": [
       "cs.CL",
-      "cs.AI"
+      "cs.AI",
+      "cs.IR"
     ]
   },
   {
-    "paper_id": "2407.16833v2",
-    "title": "Retrieval Augmented Generation or Long-Context LLMs? A Comprehensive Study and Hybrid Approach",
+    "paper_id": "2501.00353v1",
+    "title": "RAG-Instruct: Boosting LLMs with Diverse Retrieval-Augmented Instructions",
     "authors": [
-      "Zhuowan Li",
-      "Cheng Li",
-      "Mingyang Zhang",
-      "Qiaozhu Mei",
-      "Michael Bendersky"
+      "Wanlong Liu",
+      "Junying Chen",
+      "Ke Ji",
+      "Li Zhou",
+      "Wenyu Chen",
+      "Benyou Wang"
     ],
-    "abstract": "Retrieval Augmented Generation (RAG) has been a powerful tool for Large\nLanguage Models (LLMs) to efficiently process overly lengthy contexts. However,\nrecent LLMs like Gemini-1.5 and GPT-4 show exceptional capabilities to\nunderstand long contexts directly. We conduct a comprehensive comparison\nbetween RAG and long-context (LC) LLMs, aiming to leverage the strengths of\nboth. We benchmark RAG and LC across various public datasets using three latest\nLLMs. Results reveal that when resourced sufficiently, LC consistently\noutperforms RAG in terms of average performance. However, RAG's significantly\nlower cost remains a distinct advantage. Based on this observation, we propose\nSelf-Route, a simple yet effective method that routes queries to RAG or LC\nbased on model self-reflection. Self-Route significantly reduces the\ncomputation cost while maintaining a comparable performance to LC. Our findings\nprovide a guideline for long-context applications of LLMs using RAG and LC.",
-    "url": "http://arxiv.org/abs/2407.16833v2",
-    "pdf_url": "http://arxiv.org/pdf/2407.16833v2",
-    "published_date": "2024-07-23",
+    "abstract": "Retrieval-Augmented Generation (RAG) has emerged as a key paradigm for\nenhancing large language models (LLMs) by incorporating external knowledge.\nHowever, current RAG methods face two limitations: (1) they only cover limited\nRAG scenarios. (2) They suffer from limited task diversity due to the lack of a\ngeneral RAG dataset. To address these limitations, we propose RAG-Instruct, a\ngeneral method for synthesizing diverse and high-quality RAG instruction data\nbased on any source corpus. Our approach leverages (1) five RAG paradigms,\nwhich encompass diverse query-document relationships, and (2) instruction\nsimulation, which enhances instruction diversity and quality by utilizing the\nstrengths of existing instruction datasets. Using this method, we construct a\n40K instruction dataset from Wikipedia, comprehensively covering diverse RAG\nscenarios and tasks. Experiments demonstrate that RAG-Instruct effectively\nenhances LLMs' RAG capabilities, achieving strong zero-shot performance and\nsignificantly outperforming various RAG baselines across a diverse set of\ntasks. RAG-Instruct is publicly available at\nhttps://github.com/FreedomIntelligence/RAG-Instruct.",
+    "url": "http://arxiv.org/abs/2501.00353v1",
+    "pdf_url": "http://arxiv.org/pdf/2501.00353v1",
+    "published_date": "2024-12-31",
     "source": "arxiv",
     "categories": [
       "cs.CL",
@@ -39,170 +42,165 @@
     ]
   },
   {
-    "paper_id": "2405.07437v2",
-    "title": "Evaluation of Retrieval-Augmented Generation: A Survey",
+    "paper_id": "2501.05249v1",
+    "title": "RAG-WM: An Efficient Black-Box Watermarking Approach for Retrieval-Augmented Generation of Large Language Models",
     "authors": [
-      "Hao Yu",
-      "Aoran Gan",
-      "Kai Zhang",
-      "Shiwei Tong",
-      "Qi Liu",
-      "Zhaofeng Liu"
+      "Peizhuo Lv",
+      "Mengjie Sun",
+      "Hao Wang",
+      "Xiaofeng Wang",
+      "Shengzhi Zhang",
+      "Yuxuan Chen",
+      "Kai Chen",
+      "Limin Sun"
     ],
-    "abstract": "Retrieval-Augmented Generation (RAG) has recently gained traction in natural\nlanguage processing. Numerous studies and real-world applications are\nleveraging its ability to enhance generative models through external\ninformation retrieval. Evaluating these RAG systems, however, poses unique\nchallenges due to their hybrid structure and reliance on dynamic knowledge\nsources. To better understand these challenges, we conduct A Unified Evaluation\nProcess of RAG (Auepora) and aim to provide a comprehensive overview of the\nevaluation and benchmarks of RAG systems. Specifically, we examine and compare\nseveral quantifiable metrics of the Retrieval and Generation components, such\nas relevance, accuracy, and faithfulness, within the current RAG benchmarks,\nencompassing the possible output and ground truth pairs. We then analyze the\nvarious datasets and metrics, discuss the limitations of current benchmarks,\nand suggest potential directions to advance the field of RAG benchmarks.",
-    "url": "http://arxiv.org/abs/2405.07437v2",
-    "pdf_url": "http://arxiv.org/pdf/2405.07437v2",
-    "published_date": "2024-05-13",
+    "abstract": "In recent years, tremendous success has been witnessed in Retrieval-Augmented\nGeneration (RAG), widely used to enhance Large Language Models (LLMs) in\ndomain-specific, knowledge-intensive, and privacy-sensitive tasks. However,\nattackers may steal those valuable RAGs and deploy or commercialize them,\nmaking it essential to detect Intellectual Property (IP) infringement. Most\nexisting ownership protection solutions, such as watermarks, are designed for\nrelational databases and texts. They cannot be directly applied to RAGs because\nrelational database watermarks require white-box access to detect IP\ninfringement, which is unrealistic for the knowledge base in RAGs. Meanwhile,\npost-processing by the adversary's deployed LLMs typically destructs text\nwatermark information. To address those problems, we propose a novel black-box\n\"knowledge watermark\" approach, named RAG-WM, to detect IP infringement of\nRAGs. RAG-WM uses a multi-LLM interaction framework, comprising a Watermark\nGenerator, Shadow LLM & RAG, and Watermark Discriminator, to create watermark\ntexts based on watermark entity-relationship tuples and inject them into the\ntarget RAG. We evaluate RAG-WM across three domain-specific and two\nprivacy-sensitive tasks on four benchmark LLMs. Experimental results show that\nRAG-WM effectively detects the stolen RAGs in various deployed LLMs.\nFurthermore, RAG-WM is robust against paraphrasing, unrelated content removal,\nknowledge insertion, and knowledge expansion attacks. Lastly, RAG-WM can also\nevade watermark detection approaches, highlighting its promising application in\ndetecting IP infringement of RAG systems.",
+    "url": "http://arxiv.org/abs/2501.05249v1",
+    "pdf_url": "http://arxiv.org/pdf/2501.05249v1",
+    "published_date": "2025-01-09",
+    "source": "arxiv",
+    "categories": [
+      "cs.CR",
+      "cs.AI"
+    ]
+  },
+  {
+    "paper_id": "2409.01666v1",
+    "title": "In Defense of RAG in the Era of Long-Context Language Models",
+    "authors": [
+      "Tan Yu",
+      "Anbang Xu",
+      "Rama Akkiraju"
+    ],
+    "abstract": "Overcoming the limited context limitations in early-generation LLMs,\nretrieval-augmented generation (RAG) has been a reliable solution for\ncontext-based answer generation in the past. Recently, the emergence of\nlong-context LLMs allows the models to incorporate much longer text sequences,\nmaking RAG less attractive. Recent studies show that long-context LLMs\nsignificantly outperform RAG in long-context applications. Unlike the existing\nworks favoring the long-context LLM over RAG, we argue that the extremely long\ncontext in LLMs suffers from a diminished focus on relevant information and\nleads to potential degradation in answer quality. This paper revisits the RAG\nin long-context answer generation. We propose an order-preserve\nretrieval-augmented generation (OP-RAG) mechanism, which significantly improves\nthe performance of RAG for long-context question-answer applications. With\nOP-RAG, as the number of retrieved chunks increases, the answer quality\ninitially rises, and then declines, forming an inverted U-shaped curve. There\nexist sweet points where OP-RAG could achieve higher answer quality with much\nless tokens than long-context LLM taking the whole context as input. Extensive\nexperiments on public benchmark demonstrate the superiority of our OP-RAG.",
+    "url": "http://arxiv.org/abs/2409.01666v1",
+    "pdf_url": "http://arxiv.org/pdf/2409.01666v1",
+    "published_date": "2024-09-03",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "paper_id": "2502.20995v1",
+    "title": "The RAG Paradox: A Black-Box Attack Exploiting Unintentional Vulnerabilities in Retrieval-Augmented Generation Systems",
+    "authors": [
+      "Chanwoo Choi",
+      "Jinsoo Kim",
+      "Sukmin Cho",
+      "Soyeong Jeong",
+      "Buru Chang"
+    ],
+    "abstract": "With the growing adoption of retrieval-augmented generation (RAG) systems,\nrecent studies have introduced attack methods aimed at degrading their\nperformance. However, these methods rely on unrealistic white-box assumptions,\nsuch as attackers having access to RAG systems' internal processes. To address\nthis issue, we introduce a realistic black-box attack scenario based on the RAG\nparadox, where RAG systems inadvertently expose vulnerabilities while\nattempting to enhance trustworthiness. Because RAG systems reference external\ndocuments during response generation, our attack targets these sources without\nrequiring internal access. Our approach first identifies the external sources\ndisclosed by RAG systems and then automatically generates poisoned documents\nwith misinformation designed to match these sources. Finally, these poisoned\ndocuments are newly published on the disclosed sources, disrupting the RAG\nsystem's response generation process. Both offline and online experiments\nconfirm that this attack significantly reduces RAG performance without\nrequiring internal access. Furthermore, from an insider perspective within the\nRAG system, we propose a re-ranking method that acts as a fundamental\nsafeguard, offering minimal protection against unforeseen attacks.",
+    "url": "http://arxiv.org/abs/2502.20995v1",
+    "pdf_url": "http://arxiv.org/pdf/2502.20995v1",
+    "published_date": "2025-02-28",
+    "source": "arxiv",
+    "categories": [
+      "cs.CR",
+      "cs.IR"
+    ]
+  },
+  {
+    "paper_id": "2401.15391v1",
+    "title": "MultiHop-RAG: Benchmarking Retrieval-Augmented Generation for Multi-Hop Queries",
+    "authors": [
+      "Yixuan Tang",
+      "Yi Yang"
+    ],
+    "abstract": "Retrieval-augmented generation (RAG) augments large language models (LLM) by\nretrieving relevant knowledge, showing promising potential in mitigating LLM\nhallucinations and enhancing response quality, thereby facilitating the great\nadoption of LLMs in practice. However, we find that existing RAG systems are\ninadequate in answering multi-hop queries, which require retrieving and\nreasoning over multiple pieces of supporting evidence. Furthermore, to our\nknowledge, no existing RAG benchmarking dataset focuses on multi-hop queries.\nIn this paper, we develop a novel dataset, MultiHop-RAG, which consists of a\nknowledge base, a large collection of multi-hop queries, their ground-truth\nanswers, and the associated supporting evidence. We detail the procedure of\nbuilding the dataset, utilizing an English news article dataset as the\nunderlying RAG knowledge base. We demonstrate the benchmarking utility of\nMultiHop-RAG in two experiments. The first experiment compares different\nembedding models for retrieving evidence for multi-hop queries. In the second\nexperiment, we examine the capabilities of various state-of-the-art LLMs,\nincluding GPT-4, PaLM, and Llama2-70B, in reasoning and answering multi-hop\nqueries given the evidence. Both experiments reveal that existing RAG methods\nperform unsatisfactorily in retrieving and answering multi-hop queries. We hope\nMultiHop-RAG will be a valuable resource for the community in developing\neffective RAG systems, thereby facilitating greater adoption of LLMs in\npractice. The MultiHop-RAG and implemented RAG system is publicly available at\nhttps://github.com/yixuantt/MultiHop-RAG/.",
+    "url": "http://arxiv.org/abs/2401.15391v1",
+    "pdf_url": "http://arxiv.org/pdf/2401.15391v1",
+    "published_date": "2024-01-27",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL"
+    ]
+  },
+  {
+    "paper_id": "2410.07176v1",
+    "title": "Astute RAG: Overcoming Imperfect Retrieval Augmentation and Knowledge Conflicts for Large Language Models",
+    "authors": [
+      "Fei Wang",
+      "Xingchen Wan",
+      "Ruoxi Sun",
+      "Jiefeng Chen",
+      "Sercan Ö. Arık"
+    ],
+    "abstract": "Retrieval-Augmented Generation (RAG), while effective in integrating external\nknowledge to address the limitations of large language models (LLMs), can be\nundermined by imperfect retrieval, which may introduce irrelevant, misleading,\nor even malicious information. Despite its importance, previous studies have\nrarely explored the behavior of RAG through joint analysis on how errors from\nimperfect retrieval attribute and propagate, and how potential conflicts arise\nbetween the LLMs' internal knowledge and external sources. We find that\nimperfect retrieval augmentation might be inevitable and quite harmful, through\ncontrolled analysis under realistic conditions. We identify the knowledge\nconflicts between LLM-internal and external knowledge from retrieval as a\nbottleneck to overcome in the post-retrieval stage of RAG. To render LLMs\nresilient to imperfect retrieval, we propose Astute RAG, a novel RAG approach\nthat adaptively elicits essential information from LLMs' internal knowledge,\niteratively consolidates internal and external knowledge with source-awareness,\nand finalizes the answer according to information reliability. Our experiments\nusing Gemini and Claude demonstrate that Astute RAG significantly outperforms\nprevious robustness-enhanced RAG methods. Notably, Astute RAG is the only\napproach that matches or exceeds the performance of LLMs without RAG under\nworst-case scenarios. Further analysis reveals that Astute RAG effectively\nresolves knowledge conflicts, improving the reliability and trustworthiness of\nRAG systems.",
+    "url": "http://arxiv.org/abs/2410.07176v1",
+    "pdf_url": "http://arxiv.org/pdf/2410.07176v1",
+    "published_date": "2024-10-09",
     "source": "arxiv",
     "categories": [
       "cs.CL",
-      "cs.AI"
-    ]
-  },
-  {
-    "paper_id": "2412.02592v1",
-    "title": "OCR Hinders RAG: Evaluating the Cascading Impact of OCR on Retrieval-Augmented Generation",
-    "authors": [
-      "Junyuan Zhang",
-      "Qintong Zhang",
-      "Bin Wang",
-      "Linke Ouyang",
-      "Zichen Wen",
-      "Ying Li",
-      "Ka-Ho Chow",
-      "Conghui He",
-      "Wentao Zhang"
-    ],
-    "abstract": "Retrieval-augmented Generation (RAG) enhances Large Language Models (LLMs) by\nintegrating external knowledge to reduce hallucinations and incorporate\nup-to-date information without retraining. As an essential part of RAG,\nexternal knowledge bases are commonly built by extracting structured data from\nunstructured PDF documents using Optical Character Recognition (OCR). However,\ngiven the imperfect prediction of OCR and the inherent non-uniform\nrepresentation of structured data, knowledge bases inevitably contain various\nOCR noises. In this paper, we introduce OHRBench, the first benchmark for\nunderstanding the cascading impact of OCR on RAG systems. OHRBench includes 350\ncarefully selected unstructured PDF documents from six real-world RAG\napplication domains, along with Q&As derived from multimodal elements in\ndocuments, challenging existing OCR solutions used for RAG To better understand\nOCR's impact on RAG systems, we identify two primary types of OCR noise:\nSemantic Noise and Formatting Noise and apply perturbation to generate a set of\nstructured data with varying degrees of each OCR noise. Using OHRBench, we\nfirst conduct a comprehensive evaluation of current OCR solutions and reveal\nthat none is competent for constructing high-quality knowledge bases for RAG\nsystems. We then systematically evaluate the impact of these two noise types\nand demonstrate the vulnerability of RAG systems. Furthermore, we discuss the\npotential of employing Vision-Language Models (VLMs) without OCR in RAG\nsystems. Code: https://github.com/opendatalab/OHR-Bench",
-    "url": "http://arxiv.org/abs/2412.02592v1",
-    "pdf_url": "http://arxiv.org/pdf/2412.02592v1",
-    "published_date": "2024-12-03",
-    "source": "arxiv",
-    "categories": [
-      "cs.CV"
-    ]
-  },
-  {
-    "paper_id": "2502.13465v1",
-    "title": "HawkBench: Investigating Resilience of RAG Methods on Stratified Information-Seeking Tasks",
-    "authors": [
-      "Hongjin Qian",
-      "Zheng Liu",
-      "Chao Gao",
-      "Yankai Wang",
-      "Defu Lian",
-      "Zhicheng Dou"
-    ],
-    "abstract": "In real-world information-seeking scenarios, users have dynamic and diverse\nneeds, requiring RAG systems to demonstrate adaptable resilience. To\ncomprehensively evaluate the resilience of current RAG methods, we introduce\nHawkBench, a human-labeled, multi-domain benchmark designed to rigorously\nassess RAG performance across categorized task types. By stratifying tasks\nbased on information-seeking behaviors, HawkBench provides a systematic\nevaluation of how well RAG systems adapt to diverse user needs.\n  Unlike existing benchmarks, which focus primarily on specific task types\n(mostly factoid queries) and rely on varying knowledge bases, HawkBench offers:\n(1) systematic task stratification to cover a broad range of query types,\nincluding both factoid and rationale queries, (2) integration of multi-domain\ncorpora across all task types to mitigate corpus bias, and (3) rigorous\nannotation for high-quality evaluation.\n  HawkBench includes 1,600 high-quality test samples, evenly distributed across\ndomains and task types. Using this benchmark, we evaluate representative RAG\nmethods, analyzing their performance in terms of answer quality and response\nlatency. Our findings highlight the need for dynamic task strategies that\nintegrate decision-making, query interpretation, and global knowledge\nunderstanding to improve RAG generalizability. We believe HawkBench serves as a\npivotal benchmark for advancing the resilience of RAG methods and their ability\nto achieve general-purpose information seeking.",
-    "url": "http://arxiv.org/abs/2502.13465v1",
-    "pdf_url": "http://arxiv.org/pdf/2502.13465v1",
-    "published_date": "2025-02-19",
-    "source": "arxiv",
-    "categories": [
-      "cs.IR",
       "cs.AI",
-      "cs.CL"
+      "cs.LG"
     ]
   },
   {
-    "paper_id": "2401.17043v3",
-    "title": "CRUD-RAG: A Comprehensive Chinese Benchmark for Retrieval-Augmented Generation of Large Language Models",
+    "paper_id": "2410.13509v2",
+    "title": "RAG-DDR: Optimizing Retrieval-Augmented Generation Using Differentiable Data Rewards",
     "authors": [
-      "Yuanjie Lyu",
-      "Zhiyu Li",
-      "Simin Niu",
-      "Feiyu Xiong",
-      "Bo Tang",
-      "Wenjin Wang",
-      "Hao Wu",
-      "Huanyong Liu",
-      "Tong Xu",
-      "Enhong Chen"
+      "Xinze Li",
+      "Sen Mei",
+      "Zhenghao Liu",
+      "Yukun Yan",
+      "Shuo Wang",
+      "Shi Yu",
+      "Zheni Zeng",
+      "Hao Chen",
+      "Ge Yu",
+      "Zhiyuan Liu",
+      "Maosong Sun",
+      "Chenyan Xiong"
     ],
-    "abstract": "Retrieval-Augmented Generation (RAG) is a technique that enhances the\ncapabilities of large language models (LLMs) by incorporating external\nknowledge sources. This method addresses common LLM limitations, including\noutdated information and the tendency to produce inaccurate \"hallucinated\"\ncontent. However, the evaluation of RAG systems is challenging, as existing\nbenchmarks are limited in scope and diversity. Most of the current benchmarks\npredominantly assess question-answering applications, overlooking the broader\nspectrum of situations where RAG could prove advantageous. Moreover, they only\nevaluate the performance of the LLM component of the RAG pipeline in the\nexperiments, and neglect the influence of the retrieval component and the\nexternal knowledge database. To address these issues, this paper constructs a\nlarge-scale and more comprehensive benchmark, and evaluates all the components\nof RAG systems in various RAG application scenarios. Specifically, we have\ncategorized the range of RAG applications into four distinct types-Create,\nRead, Update, and Delete (CRUD), each representing a unique use case. \"Create\"\nrefers to scenarios requiring the generation of original, varied content.\n\"Read\" involves responding to intricate questions in knowledge-intensive\nsituations. \"Update\" focuses on revising and rectifying inaccuracies or\ninconsistencies in pre-existing texts. \"Delete\" pertains to the task of\nsummarizing extensive texts into more concise forms. For each of these CRUD\ncategories, we have developed comprehensive datasets to evaluate the\nperformance of RAG systems. We also analyze the effects of various components\nof the RAG system, such as the retriever, the context length, the knowledge\nbase construction, and the LLM. Finally, we provide useful insights for\noptimizing the RAG technology for different scenarios.",
-    "url": "http://arxiv.org/abs/2401.17043v3",
-    "pdf_url": "http://arxiv.org/pdf/2401.17043v3",
-    "published_date": "2024-01-30",
+    "abstract": "Retrieval-Augmented Generation (RAG) has proven its effectiveness in\nmitigating hallucinations in Large Language Models (LLMs) by retrieving\nknowledge from external resources. To adapt LLMs for the RAG systems, current\napproaches use instruction tuning to optimize LLMs, improving their ability to\nutilize retrieved knowledge. This supervised fine-tuning (SFT) approach focuses\non equipping LLMs to handle diverse RAG tasks using different instructions.\nHowever, it trains RAG modules to overfit training signals and overlooks the\nvarying data preferences among agents within the RAG system. In this paper, we\npropose a Differentiable Data Rewards (DDR) method, which end-to-end trains RAG\nsystems by aligning data preferences between different RAG modules. DDR works\nby collecting the rewards to optimize each agent in the RAG system with the\nrollout method, which prompts agents to sample some potential responses as\nperturbations, evaluates the impact of these perturbations on the whole RAG\nsystem, and subsequently optimizes the agent to produce outputs that improve\nthe performance of the RAG system. Our experiments on various\nknowledge-intensive tasks demonstrate that DDR significantly outperforms the\nSFT method, particularly for LLMs with smaller-scale parameters that depend\nmore on the retrieved knowledge. Additionally, DDR exhibits a stronger\ncapability to align the data preference between RAG modules. The DDR method\nmakes the generation module more effective in extracting key information from\ndocuments and mitigating conflicts between parametric memory and external\nknowledge. All codes are available at https://github.com/OpenMatch/RAG-DDR.",
+    "url": "http://arxiv.org/abs/2410.13509v2",
+    "pdf_url": "http://arxiv.org/pdf/2410.13509v2",
+    "published_date": "2024-10-17",
     "source": "arxiv",
     "categories": [
       "cs.CL"
     ]
   },
   {
-    "paper_id": "2412.13018v2",
-    "title": "OmniEval: An Omnidirectional and Automatic RAG Evaluation Benchmark in Financial Domain",
+    "paper_id": "2401.05856v1",
+    "title": "Seven Failure Points When Engineering a Retrieval Augmented Generation System",
     "authors": [
-      "Shuting Wang",
-      "Jiejun Tan",
-      "Zhicheng Dou",
-      "Ji-Rong Wen"
+      "Scott Barnett",
+      "Stefanus Kurniawan",
+      "Srikanth Thudumu",
+      "Zach Brannelly",
+      "Mohamed Abdelrazek"
     ],
-    "abstract": "As a typical and practical application of Large Language Models (LLMs),\nRetrieval-Augmented Generation (RAG) techniques have gained extensive\nattention, particularly in vertical domains where LLMs may lack domain-specific\nknowledge. In this paper, we introduce an omnidirectional and automatic RAG\nbenchmark, OmniEval, in the financial domain. Our benchmark is characterized by\nits multi-dimensional evaluation framework, including (1) a matrix-based RAG\nscenario evaluation system that categorizes queries into five task classes and\n16 financial topics, leading to a structured assessment of diverse query\nscenarios; (2) a multi-dimensional evaluation data generation approach, which\ncombines GPT-4-based automatic generation and human annotation, achieving an\n87.47\\% acceptance ratio in human evaluations on generated instances; (3) a\nmulti-stage evaluation system that evaluates both retrieval and generation\nperformance, result in a comprehensive evaluation on the RAG pipeline; and (4)\nrobust evaluation metrics derived from rule-based and LLM-based ones, enhancing\nthe reliability of assessments through manual annotations and supervised\nfine-tuning of an LLM evaluator. Our experiments demonstrate the\ncomprehensiveness of OmniEval, which includes extensive test datasets and\nhighlights the performance variations of RAG systems across diverse topics and\ntasks, revealing significant opportunities for RAG models to improve their\ncapabilities in vertical domains. We open source the code of our benchmark in\n\\href{https://github.com/RUC-NLPIR/OmniEval}{https://github.com/RUC-NLPIR/OmniEval}.",
-    "url": "http://arxiv.org/abs/2412.13018v2",
-    "pdf_url": "http://arxiv.org/pdf/2412.13018v2",
-    "published_date": "2024-12-17",
+    "abstract": "Software engineers are increasingly adding semantic search capabilities to\napplications using a strategy known as Retrieval Augmented Generation (RAG). A\nRAG system involves finding documents that semantically match a query and then\npassing the documents to a large language model (LLM) such as ChatGPT to\nextract the right answer using an LLM. RAG systems aim to: a) reduce the\nproblem of hallucinated responses from LLMs, b) link sources/references to\ngenerated responses, and c) remove the need for annotating documents with\nmeta-data. However, RAG systems suffer from limitations inherent to information\nretrieval systems and from reliance on LLMs. In this paper, we present an\nexperience report on the failure points of RAG systems from three case studies\nfrom separate domains: research, education, and biomedical. We share the\nlessons learned and present 7 failure points to consider when designing a RAG\nsystem. The two key takeaways arising from our work are: 1) validation of a RAG\nsystem is only feasible during operation, and 2) the robustness of a RAG system\nevolves rather than designed in at the start. We conclude with a list of\npotential research directions on RAG systems for the software engineering\ncommunity.",
+    "url": "http://arxiv.org/abs/2401.05856v1",
+    "pdf_url": "http://arxiv.org/pdf/2401.05856v1",
+    "published_date": "2024-01-11",
     "source": "arxiv",
     "categories": [
-      "cs.CL"
-    ]
-  },
-  {
-    "paper_id": "2409.15763v2",
-    "title": "IRSC: A Zero-shot Evaluation Benchmark for Information Retrieval through Semantic Comprehension in Retrieval-Augmented Generation Scenarios",
-    "authors": [
-      "Hai Lin",
-      "Shaoxiong Zhan",
-      "Junyou Su",
-      "Haitao Zheng",
-      "Hui Wang"
-    ],
-    "abstract": "In Retrieval-Augmented Generation (RAG) tasks using Large Language Models\n(LLMs), the quality of retrieved information is critical to the final output.\nThis paper introduces the IRSC benchmark for evaluating the performance of\nembedding models in multilingual RAG tasks. The benchmark encompasses five\nretrieval tasks: query retrieval, title retrieval, part-of-paragraph retrieval,\nkeyword retrieval, and summary retrieval. Our research addresses the current\nlack of comprehensive testing and effective comparison methods for embedding\nmodels in RAG scenarios. We introduced new metrics: the Similarity of Semantic\nComprehension Index (SSCI) and the Retrieval Capability Contest Index (RCCI),\nand evaluated models such as Snowflake-Arctic, BGE, GTE, and M3E. Our\ncontributions include: 1) the IRSC benchmark, 2) the SSCI and RCCI metrics, and\n3) insights into the cross-lingual limitations of embedding models. The IRSC\nbenchmark aims to enhance the understanding and development of accurate\nretrieval systems in RAG tasks. All code and datasets are available at:\nhttps://github.com/Jasaxion/IRSC_Benchmark",
-    "url": "http://arxiv.org/abs/2409.15763v2",
-    "pdf_url": "http://arxiv.org/pdf/2409.15763v2",
-    "published_date": "2024-09-24",
-    "source": "arxiv",
-    "categories": [
-      "cs.IR",
+      "cs.SE",
       "cs.AI"
     ]
   },
   {
-    "paper_id": "2501.13264v2",
-    "title": "RAG-Reward: Optimizing RAG with Reward Modeling and RLHF",
+    "paper_id": "2404.00657v1",
+    "title": "Observations on Building RAG Systems for Technical Documents",
     "authors": [
-      "Hanning Zhang",
-      "Juntong Song",
-      "Juno Zhu",
-      "Yuanhao Wu",
-      "Tong Zhang",
-      "Cheng Niu"
+      "Sumit Soman",
+      "Sujoy Roychowdhury"
     ],
-    "abstract": "Retrieval-augmented generation (RAG) enhances Large Language Models (LLMs)\nwith relevant and up-to-date knowledge, improving their ability to answer\nknowledge-intensive questions. It has been shown to enhance both generation\nquality and trustworthiness. While numerous works have focused on improving\nretrieval, generation, and evaluation, the role of reward models in\nreinforcement learning for optimizing RAG remains underexplored. In this paper,\nwe introduce \\textbf{RAG-Reward}, a framework designed to develop reward models\nto enable \\textit{hallucination-free, comprehensive, reliable, and efficient\nRAG}. We define four key metrics to assess generation quality and develop an\nautomated benchmarking pipeline to evaluate the outputs of multiple LLMs across\na variety of RAG scenarios. Using \\textbf{RAG-Reward}, we train reward models\nand apply {reinforcement learning with human feedback (RLHF)} to improve LLMs'\neffectiveness in RAG. Experimental results demonstrate that our reward model\nachieves state-of-the-art performance in automatic benchmarking and aligns\nclosely with human evaluations. Furthermore, the improved generation quality of\nthe trained policy model highlights the feasibility and efficiency of using\nRLHF to enhance RAG outputs.",
-    "url": "http://arxiv.org/abs/2501.13264v2",
-    "pdf_url": "http://arxiv.org/pdf/2501.13264v2",
-    "published_date": "2025-01-22",
+    "abstract": "Retrieval augmented generation (RAG) for technical documents creates\nchallenges as embeddings do not often capture domain information. We review\nprior art for important factors affecting RAG and perform experiments to\nhighlight best practices and potential challenges to build RAG systems for\ntechnical documents.",
+    "url": "http://arxiv.org/abs/2404.00657v1",
+    "pdf_url": "http://arxiv.org/pdf/2404.00657v1",
+    "published_date": "2024-03-31",
     "source": "arxiv",
     "categories": [
-      "cs.CL"
-    ]
-  },
-  {
-    "paper_id": "2410.12248v1",
-    "title": "CoFE-RAG: A Comprehensive Full-chain Evaluation Framework for Retrieval-Augmented Generation with Enhanced Data Diversity",
-    "authors": [
-      "Jintao Liu",
-      "Ruixue Ding",
-      "Linhao Zhang",
-      "Pengjun Xie",
-      "Fie Huang"
-    ],
-    "abstract": "Retrieval-Augmented Generation (RAG) aims to enhance large language models\n(LLMs) to generate more accurate and reliable answers with the help of the\nretrieved context from external knowledge sources, thereby reducing the\nincidence of hallucinations. Despite the advancements, evaluating these systems\nremains a crucial research area due to the following issues: (1) Limited data\ndiversity: The insufficient diversity of knowledge sources and query types\nconstrains the applicability of RAG systems; (2) Obscure problems location:\nExisting evaluation methods have difficulty in locating the stage of the RAG\npipeline where problems occur; (3) Unstable retrieval evaluation: These methods\noften fail to effectively assess retrieval performance, particularly when the\nchunking strategy changes. To tackle these challenges, we propose a\nComprehensive Full-chain Evaluation (CoFE-RAG) framework to facilitate thorough\nevaluation across the entire RAG pipeline, including chunking, retrieval,\nreranking, and generation. To effectively evaluate the first three phases, we\nintroduce multi-granularity keywords, including coarse-grained and fine-grained\nkeywords, to assess the retrieved context instead of relying on the annotation\nof golden chunks. Moreover, we release a holistic benchmark dataset tailored\nfor diverse data scenarios covering a wide range of document formats and query\ntypes. We demonstrate the utility of the CoFE-RAG framework by conducting\nexperiments to evaluate each stage of RAG systems. Our evaluation method\nprovides unique insights into the effectiveness of RAG systems in handling\ndiverse data scenarios, offering a more nuanced understanding of their\ncapabilities and limitations.",
-    "url": "http://arxiv.org/abs/2410.12248v1",
-    "pdf_url": "http://arxiv.org/pdf/2410.12248v1",
-    "published_date": "2024-10-16",
-    "source": "arxiv",
-    "categories": [
-      "cs.CL"
+      "cs.LG",
+      "cs.AI",
+      "cs.CL",
+      "I.2.7"
     ]
   }
 ]
