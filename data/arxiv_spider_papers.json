@@ -1,206 +1,392 @@
 [
   {
-    "paper_id": "2407.21059v1",
-    "title": "Modular RAG: Transforming RAG Systems into LEGO-like Reconfigurable Frameworks",
+    "paper_id": "2008.04128v1",
+    "title": "A New Abstraction for Internet QoE Optimization",
     "authors": [
-      "Yunfan Gao",
-      "Yun Xiong",
-      "Meng Wang",
-      "Haofen Wang"
+      "Junchen Jiang",
+      "Siddhartha Sen"
     ],
-    "abstract": "Retrieval-augmented Generation (RAG) has markedly enhanced the capabilities\nof Large Language Models (LLMs) in tackling knowledge-intensive tasks. The\nincreasing demands of application scenarios have driven the evolution of RAG,\nleading to the integration of advanced retrievers, LLMs and other complementary\ntechnologies, which in turn has amplified the intricacy of RAG systems.\nHowever, the rapid advancements are outpacing the foundational RAG paradigm,\nwith many methods struggling to be unified under the process of\n\"retrieve-then-generate\". In this context, this paper examines the limitations\nof the existing RAG paradigm and introduces the modular RAG framework. By\ndecomposing complex RAG systems into independent modules and specialized\noperators, it facilitates a highly reconfigurable framework. Modular RAG\ntranscends the traditional linear architecture, embracing a more advanced\ndesign that integrates routing, scheduling, and fusion mechanisms. Drawing on\nextensive research, this paper further identifies prevalent RAG\npatterns-linear, conditional, branching, and looping-and offers a comprehensive\nanalysis of their respective implementation nuances. Modular RAG presents\ninnovative opportunities for the conceptualization and deployment of RAG\nsystems. Finally, the paper explores the potential emergence of new operators\nand paradigms, establishing a solid theoretical foundation and a practical\nroadmap for the continued evolution and practical deployment of RAG\ntechnologies.",
-    "url": "http://arxiv.org/abs/2407.21059v1",
-    "pdf_url": "http://arxiv.org/pdf/2407.21059v1",
-    "published_date": "2024-07-26",
+    "abstract": "A perennial quest in networking research is how to achieve higher quality of\nexperience (QoE) for users without incurring more resources. This work revisits\nan important yet often overlooked piece of the puzzle: what should the QoE\nabstraction be? A QoE abstraction is a representation of application quality\nthat describes how decisions affect QoE. The conventional wisdom has relied on\ndeveloping hand-crafted quality metrics (e.g., video rebuffering events, web\npage loading time) that are specialized to each application, content, and\nsetting. We argue that in many cases, it maybe fundamentally hard to capture a\nuser's perception of quality using a list of handcrafted metrics, and that\nexpanding the metric list may lead to unnecessary complexity in the QoE model\nwithout a commensurate gain. Instead, we advocate for a new approach based on a\nnew QoE abstraction called visual rendering. Rather than a list of metrics, we\nmodel the process of quality perception as a user watching a continuous \"video\"\n(visual rendering) of all the pixels on their screen. The key advantage of\nvisual rendering is that it captures the full experience of a user with the\nsame abstraction for all applications. This new abstraction opens new\nopportunities (e.g., the possibility of end-to-end deep learning models that\ninfer QoE directly from a visual rendering) but it also gives rise to new\nresearch challenges (e.g., how to emulate the effect on visual rendering of an\napplication decision). This paper makes the case for visual rendering as a\nunifying abstraction for Internet QoE and outlines a new research agenda to\nunleash its opportunities.",
+    "url": "http://arxiv.org/abs/2008.04128v1",
+    "pdf_url": "http://arxiv.org/pdf/2008.04128v1",
+    "published_date": "2020-08-10",
     "source": "arxiv",
     "categories": [
-      "cs.CL",
-      "cs.AI",
-      "cs.IR"
+      "cs.NI"
     ]
   },
   {
-    "paper_id": "2501.00353v1",
-    "title": "RAG-Instruct: Boosting LLMs with Diverse Retrieval-Augmented Instructions",
+    "paper_id": "1505.02056v1",
+    "title": "DDA: Cross-Session Throughput Prediction with Applications to Video Bitrate Selection",
     "authors": [
-      "Wanlong Liu",
-      "Junying Chen",
-      "Ke Ji",
-      "Li Zhou",
-      "Wenyu Chen",
-      "Benyou Wang"
+      "Junchen Jiang",
+      "Vyas Sekar",
+      "Yi Sun"
     ],
-    "abstract": "Retrieval-Augmented Generation (RAG) has emerged as a key paradigm for\nenhancing large language models (LLMs) by incorporating external knowledge.\nHowever, current RAG methods face two limitations: (1) they only cover limited\nRAG scenarios. (2) They suffer from limited task diversity due to the lack of a\ngeneral RAG dataset. To address these limitations, we propose RAG-Instruct, a\ngeneral method for synthesizing diverse and high-quality RAG instruction data\nbased on any source corpus. Our approach leverages (1) five RAG paradigms,\nwhich encompass diverse query-document relationships, and (2) instruction\nsimulation, which enhances instruction diversity and quality by utilizing the\nstrengths of existing instruction datasets. Using this method, we construct a\n40K instruction dataset from Wikipedia, comprehensively covering diverse RAG\nscenarios and tasks. Experiments demonstrate that RAG-Instruct effectively\nenhances LLMs' RAG capabilities, achieving strong zero-shot performance and\nsignificantly outperforming various RAG baselines across a diverse set of\ntasks. RAG-Instruct is publicly available at\nhttps://github.com/FreedomIntelligence/RAG-Instruct.",
-    "url": "http://arxiv.org/abs/2501.00353v1",
-    "pdf_url": "http://arxiv.org/pdf/2501.00353v1",
-    "published_date": "2024-12-31",
+    "abstract": "User experience of video streaming could be greatly improved by selecting a\nhigh-yet-sustainable initial video bitrate, and it is therefore critical to\naccurately predict throughput before a video session starts. Inspired by\nprevious studies that show similarity among throughput of similar sessions\n(e.g., those sharing same bottleneck link), we argue for a cross-session\nprediction approach, where throughput measured on other sessions is used to\npredict the throughput of a new session. In this paper, we study the challenges\nof cross-session throughput prediction, develop an accurate throughput\npredictor called DDA, and evaluate the performance of the predictor with\nreal-world datasets. We show that DDA can predict throughput more accurately\nthan simple predictors and conventional machine learning algorithms; e.g.,\nDDA's 80%ile prediction error of DDA is > 50% lower than other algorithms. We\nalso show that this improved accuracy enables video players to select a higher\nsustainable initial bitrate; e.g., compared to initial bitrate without\nprediction, DDA leads to 4x higher average bitrate.",
+    "url": "http://arxiv.org/abs/1505.02056v1",
+    "pdf_url": "http://arxiv.org/pdf/1505.02056v1",
+    "published_date": "2015-05-08",
     "source": "arxiv",
     "categories": [
-      "cs.CL",
-      "cs.AI",
-      "cs.LG"
+      "cs.NI"
     ]
   },
   {
-    "paper_id": "2501.05249v1",
-    "title": "RAG-WM: An Efficient Black-Box Watermarking Approach for Retrieval-Augmented Generation of Large Language Models",
+    "paper_id": "2008.04687v1",
+    "title": "SENSEI: Aligning Video Streaming Quality with Dynamic User Sensitivity",
     "authors": [
-      "Peizhuo Lv",
-      "Mengjie Sun",
-      "Hao Wang",
-      "Xiaofeng Wang",
-      "Shengzhi Zhang",
-      "Yuxuan Chen",
-      "Kai Chen",
-      "Limin Sun"
+      "Xu Zhang",
+      "Yiyang Ou",
+      "Siddhartha Sen",
+      "Junchen Jiang"
     ],
-    "abstract": "In recent years, tremendous success has been witnessed in Retrieval-Augmented\nGeneration (RAG), widely used to enhance Large Language Models (LLMs) in\ndomain-specific, knowledge-intensive, and privacy-sensitive tasks. However,\nattackers may steal those valuable RAGs and deploy or commercialize them,\nmaking it essential to detect Intellectual Property (IP) infringement. Most\nexisting ownership protection solutions, such as watermarks, are designed for\nrelational databases and texts. They cannot be directly applied to RAGs because\nrelational database watermarks require white-box access to detect IP\ninfringement, which is unrealistic for the knowledge base in RAGs. Meanwhile,\npost-processing by the adversary's deployed LLMs typically destructs text\nwatermark information. To address those problems, we propose a novel black-box\n\"knowledge watermark\" approach, named RAG-WM, to detect IP infringement of\nRAGs. RAG-WM uses a multi-LLM interaction framework, comprising a Watermark\nGenerator, Shadow LLM & RAG, and Watermark Discriminator, to create watermark\ntexts based on watermark entity-relationship tuples and inject them into the\ntarget RAG. We evaluate RAG-WM across three domain-specific and two\nprivacy-sensitive tasks on four benchmark LLMs. Experimental results show that\nRAG-WM effectively detects the stolen RAGs in various deployed LLMs.\nFurthermore, RAG-WM is robust against paraphrasing, unrelated content removal,\nknowledge insertion, and knowledge expansion attacks. Lastly, RAG-WM can also\nevade watermark detection approaches, highlighting its promising application in\ndetecting IP infringement of RAG systems.",
-    "url": "http://arxiv.org/abs/2501.05249v1",
-    "pdf_url": "http://arxiv.org/pdf/2501.05249v1",
-    "published_date": "2025-01-09",
+    "abstract": "This paper aims to improve video streaming by leveraging a simple\nobservation: users are more sensitive to low quality in certain parts of a\nvideo than in others. For instance, rebuffering during key moments of a sports\nvideo (e.g., before a goal is scored) is more annoying than rebuffering during\nnormal gameplay. Such dynamic quality sensitivity, however, is rarely captured\nby current approaches, which predict QoE (quality-of-experience) using\none-size-fits-all heuristics that are too simplistic to understand the nuances\nof video content. Instead of proposing yet another heuristic, we take a\ndifferent approach: we run a separate crowdsourcing experiment for each video\nto derive users' quality sensitivity at different parts of the video. Of\ncourse, the cost of doing this at scale can be prohibitive, but we show that\ncareful experiment design combined with a suite of pruning techniques can make\nthe cost negligible compared to how much content providers invest in content\ngeneration and distribution. Our ability to accurately profile time-varying\nuser sensitivity inspires a new approach: dynamically aligning higher (lower)\nquality with higher (lower) sensitivity periods. We present a new video\nstreaming system called SENSEI that incorporates dynamic quality sensitivity\ninto existing quality adaptation algorithms. We apply SENSEI to two\nstate-of-the-art adaptation algorithms. SENSEI can take seemingly unusual\nactions: e.g., lowering bitrate (or initiating a rebuffering event) even when\nbandwidth is sufficient so that it can maintain a higher bitrate without\nrebuffering when quality sensitivity becomes higher in the near future.\nCompared to state-of-the-art approaches, SENSEI improves QoE by 15.1% or\nachieves the same QoE with 26.8% less bandwidth on average.",
+    "url": "http://arxiv.org/abs/2008.04687v1",
+    "pdf_url": "http://arxiv.org/pdf/2008.04687v1",
+    "published_date": "2020-08-11",
     "source": "arxiv",
     "categories": [
-      "cs.CR",
+      "cs.NI",
+      "cs.MM"
+    ]
+  },
+  {
+    "paper_id": "2409.13761v2",
+    "title": "Do Large Language Models Need a Content Delivery Network?",
+    "authors": [
+      "Yihua Cheng",
+      "Kuntai Du",
+      "Jiayi Yao",
+      "Junchen Jiang"
+    ],
+    "abstract": "As the use of large language models (LLMs) expands rapidly, so does the range\nof knowledge needed to supplement various LLM queries. Thus, enabling flexible\nand efficient injection of new knowledge in LLM inference is critical. Three\nhigh-level options exist: (i) embedding the knowledge in LLM's weights (i.e.,\nfine-tuning), (ii) including the knowledge as a part of LLM's text input (i.e.,\nin-context learning), or (iii) injecting the KV caches of the new knowledge to\nLLM during prefill. This paper argues that, although fine-tuning and in-context\nlearning are popular, using KV caches as the medium of knowledge could\nsimultaneously enable more modular management of knowledge injection and more\nefficient LLM serving with low cost and fast response. To realize these\nbenefits, we envision a Knowledge Delivery Network (KDN), a new system\ncomponent in LLM services that dynamically optimizes the storage, transfer, and\ncomposition of KV cache across LLM engines and other compute and storage\nresources. We believe that, just like content delivery networks (CDNs), such as\nAkamai, enabled the success of the Internet ecosystem through their efficient\ndata delivery, KDNs will be critical to the success of LLM applications through\ntheir efficient knowledge delivery. We have open-sourced a KDN prototype at\nhttps://github.com/LMCache/LMCache.",
+    "url": "http://arxiv.org/abs/2409.13761v2",
+    "pdf_url": "http://arxiv.org/pdf/2409.13761v2",
+    "published_date": "2024-09-16",
+    "source": "arxiv",
+    "categories": [
+      "cs.CL",
       "cs.AI"
     ]
   },
   {
-    "paper_id": "2409.01666v1",
-    "title": "In Defense of RAG in the Era of Long-Context Language Models",
+    "paper_id": "2411.06742v2",
+    "title": "Loss-tolerant neural video codec aware congestion control for real time video communication",
     "authors": [
-      "Tan Yu",
-      "Anbang Xu",
-      "Rama Akkiraju"
+      "Zhengxu Xia",
+      "Hanchen Li",
+      "Junchen Jiang"
     ],
-    "abstract": "Overcoming the limited context limitations in early-generation LLMs,\nretrieval-augmented generation (RAG) has been a reliable solution for\ncontext-based answer generation in the past. Recently, the emergence of\nlong-context LLMs allows the models to incorporate much longer text sequences,\nmaking RAG less attractive. Recent studies show that long-context LLMs\nsignificantly outperform RAG in long-context applications. Unlike the existing\nworks favoring the long-context LLM over RAG, we argue that the extremely long\ncontext in LLMs suffers from a diminished focus on relevant information and\nleads to potential degradation in answer quality. This paper revisits the RAG\nin long-context answer generation. We propose an order-preserve\nretrieval-augmented generation (OP-RAG) mechanism, which significantly improves\nthe performance of RAG for long-context question-answer applications. With\nOP-RAG, as the number of retrieved chunks increases, the answer quality\ninitially rises, and then declines, forming an inverted U-shaped curve. There\nexist sweet points where OP-RAG could achieve higher answer quality with much\nless tokens than long-context LLM taking the whole context as input. Extensive\nexperiments on public benchmark demonstrate the superiority of our OP-RAG.",
-    "url": "http://arxiv.org/abs/2409.01666v1",
-    "pdf_url": "http://arxiv.org/pdf/2409.01666v1",
-    "published_date": "2024-09-03",
+    "abstract": "Because of reinforcement learning's (RL) ability to automatically create more\nadaptive controlling logics beyond the hand-crafted heuristics, numerous effort\nhas been made to apply RL to congestion control (CC) design for real time video\ncommunication (RTC) applications and has successfully shown promising benefits\nover the rule-based RTC CCs. Online reinforcement learning is often adopted to\ntrain the RL models so the models can directly adapt to real network\nenvironments. However, its trail-and-error manner can also cause catastrophic\ndegradation of the quality of experience (QoE) of RTC application at run time.\nThus, safeguard strategies such as falling back to hand-crafted heuristics can\nbe used to run along with RL models to guarantee the actions explored in the\ntraining sensible, despite that these safeguard strategies interrupt the\nlearning process and make it more challenging to discover optimal RL policies.\n  The recent emergence of loss-tolerant neural video codecs (NVC) naturally\nprovides a layer of protection for the online learning of RL-based congestion\ncontrol because of its resilience to packet losses, but such packet loss\nresilience have not been fully exploited in prior works yet. In this paper, we\npresent a reinforcement learning (RL) based congestion control which can be\naware of and takes advantage of packet loss tolerance characteristic of NVCs\nvia reward in online RL learning. Through extensive evaluation on various\nvideos and network traces in a simulated environment, we demonstrate that our\nNVC-aware CC running with the loss-tolerant NVC reduces the training time by\n41\\% compared to other prior RL-based CCs. It also boosts the mean video\nquality by 0.3 to 1.6dB, lower the tail frame delay by 3 to 200ms, and reduces\nthe video stalls by 20\\% to 77\\% in comparison with other baseline RTC CCs.",
+    "url": "http://arxiv.org/abs/2411.06742v2",
+    "pdf_url": "http://arxiv.org/pdf/2411.06742v2",
+    "published_date": "2024-11-11",
     "source": "arxiv",
     "categories": [
-      "cs.CL"
+      "cs.NI",
+      "cs.MM"
     ]
   },
   {
-    "paper_id": "2502.20995v1",
-    "title": "The RAG Paradox: A Black-Box Attack Exploiting Unintentional Vulnerabilities in Retrieval-Augmented Generation Systems",
+    "paper_id": "2411.13009v2",
+    "title": "LLMSteer: Improving Long-Context LLM Inference by Steering Attention on Reused Contexts",
     "authors": [
-      "Chanwoo Choi",
-      "Jinsoo Kim",
-      "Sukmin Cho",
-      "Soyeong Jeong",
-      "Buru Chang"
+      "Zhuohan Gu",
+      "Jiayi Yao",
+      "Kuntai Du",
+      "Junchen Jiang"
     ],
-    "abstract": "With the growing adoption of retrieval-augmented generation (RAG) systems,\nrecent studies have introduced attack methods aimed at degrading their\nperformance. However, these methods rely on unrealistic white-box assumptions,\nsuch as attackers having access to RAG systems' internal processes. To address\nthis issue, we introduce a realistic black-box attack scenario based on the RAG\nparadox, where RAG systems inadvertently expose vulnerabilities while\nattempting to enhance trustworthiness. Because RAG systems reference external\ndocuments during response generation, our attack targets these sources without\nrequiring internal access. Our approach first identifies the external sources\ndisclosed by RAG systems and then automatically generates poisoned documents\nwith misinformation designed to match these sources. Finally, these poisoned\ndocuments are newly published on the disclosed sources, disrupting the RAG\nsystem's response generation process. Both offline and online experiments\nconfirm that this attack significantly reduces RAG performance without\nrequiring internal access. Furthermore, from an insider perspective within the\nRAG system, we propose a re-ranking method that acts as a fundamental\nsafeguard, offering minimal protection against unforeseen attacks.",
-    "url": "http://arxiv.org/abs/2502.20995v1",
-    "pdf_url": "http://arxiv.org/pdf/2502.20995v1",
-    "published_date": "2025-02-28",
-    "source": "arxiv",
-    "categories": [
-      "cs.CR",
-      "cs.IR"
-    ]
-  },
-  {
-    "paper_id": "2401.15391v1",
-    "title": "MultiHop-RAG: Benchmarking Retrieval-Augmented Generation for Multi-Hop Queries",
-    "authors": [
-      "Yixuan Tang",
-      "Yi Yang"
-    ],
-    "abstract": "Retrieval-augmented generation (RAG) augments large language models (LLM) by\nretrieving relevant knowledge, showing promising potential in mitigating LLM\nhallucinations and enhancing response quality, thereby facilitating the great\nadoption of LLMs in practice. However, we find that existing RAG systems are\ninadequate in answering multi-hop queries, which require retrieving and\nreasoning over multiple pieces of supporting evidence. Furthermore, to our\nknowledge, no existing RAG benchmarking dataset focuses on multi-hop queries.\nIn this paper, we develop a novel dataset, MultiHop-RAG, which consists of a\nknowledge base, a large collection of multi-hop queries, their ground-truth\nanswers, and the associated supporting evidence. We detail the procedure of\nbuilding the dataset, utilizing an English news article dataset as the\nunderlying RAG knowledge base. We demonstrate the benchmarking utility of\nMultiHop-RAG in two experiments. The first experiment compares different\nembedding models for retrieving evidence for multi-hop queries. In the second\nexperiment, we examine the capabilities of various state-of-the-art LLMs,\nincluding GPT-4, PaLM, and Llama2-70B, in reasoning and answering multi-hop\nqueries given the evidence. Both experiments reveal that existing RAG methods\nperform unsatisfactorily in retrieving and answering multi-hop queries. We hope\nMultiHop-RAG will be a valuable resource for the community in developing\neffective RAG systems, thereby facilitating greater adoption of LLMs in\npractice. The MultiHop-RAG and implemented RAG system is publicly available at\nhttps://github.com/yixuantt/MultiHop-RAG/.",
-    "url": "http://arxiv.org/abs/2401.15391v1",
-    "pdf_url": "http://arxiv.org/pdf/2401.15391v1",
-    "published_date": "2024-01-27",
-    "source": "arxiv",
-    "categories": [
-      "cs.CL"
-    ]
-  },
-  {
-    "paper_id": "2410.07176v1",
-    "title": "Astute RAG: Overcoming Imperfect Retrieval Augmentation and Knowledge Conflicts for Large Language Models",
-    "authors": [
-      "Fei Wang",
-      "Xingchen Wan",
-      "Ruoxi Sun",
-      "Jiefeng Chen",
-      "Sercan Ö. Arık"
-    ],
-    "abstract": "Retrieval-Augmented Generation (RAG), while effective in integrating external\nknowledge to address the limitations of large language models (LLMs), can be\nundermined by imperfect retrieval, which may introduce irrelevant, misleading,\nor even malicious information. Despite its importance, previous studies have\nrarely explored the behavior of RAG through joint analysis on how errors from\nimperfect retrieval attribute and propagate, and how potential conflicts arise\nbetween the LLMs' internal knowledge and external sources. We find that\nimperfect retrieval augmentation might be inevitable and quite harmful, through\ncontrolled analysis under realistic conditions. We identify the knowledge\nconflicts between LLM-internal and external knowledge from retrieval as a\nbottleneck to overcome in the post-retrieval stage of RAG. To render LLMs\nresilient to imperfect retrieval, we propose Astute RAG, a novel RAG approach\nthat adaptively elicits essential information from LLMs' internal knowledge,\niteratively consolidates internal and external knowledge with source-awareness,\nand finalizes the answer according to information reliability. Our experiments\nusing Gemini and Claude demonstrate that Astute RAG significantly outperforms\nprevious robustness-enhanced RAG methods. Notably, Astute RAG is the only\napproach that matches or exceeds the performance of LLMs without RAG under\nworst-case scenarios. Further analysis reveals that Astute RAG effectively\nresolves knowledge conflicts, improving the reliability and trustworthiness of\nRAG systems.",
-    "url": "http://arxiv.org/abs/2410.07176v1",
-    "pdf_url": "http://arxiv.org/pdf/2410.07176v1",
-    "published_date": "2024-10-09",
-    "source": "arxiv",
-    "categories": [
-      "cs.CL",
-      "cs.AI",
-      "cs.LG"
-    ]
-  },
-  {
-    "paper_id": "2410.13509v2",
-    "title": "RAG-DDR: Optimizing Retrieval-Augmented Generation Using Differentiable Data Rewards",
-    "authors": [
-      "Xinze Li",
-      "Sen Mei",
-      "Zhenghao Liu",
-      "Yukun Yan",
-      "Shuo Wang",
-      "Shi Yu",
-      "Zheni Zeng",
-      "Hao Chen",
-      "Ge Yu",
-      "Zhiyuan Liu",
-      "Maosong Sun",
-      "Chenyan Xiong"
-    ],
-    "abstract": "Retrieval-Augmented Generation (RAG) has proven its effectiveness in\nmitigating hallucinations in Large Language Models (LLMs) by retrieving\nknowledge from external resources. To adapt LLMs for the RAG systems, current\napproaches use instruction tuning to optimize LLMs, improving their ability to\nutilize retrieved knowledge. This supervised fine-tuning (SFT) approach focuses\non equipping LLMs to handle diverse RAG tasks using different instructions.\nHowever, it trains RAG modules to overfit training signals and overlooks the\nvarying data preferences among agents within the RAG system. In this paper, we\npropose a Differentiable Data Rewards (DDR) method, which end-to-end trains RAG\nsystems by aligning data preferences between different RAG modules. DDR works\nby collecting the rewards to optimize each agent in the RAG system with the\nrollout method, which prompts agents to sample some potential responses as\nperturbations, evaluates the impact of these perturbations on the whole RAG\nsystem, and subsequently optimizes the agent to produce outputs that improve\nthe performance of the RAG system. Our experiments on various\nknowledge-intensive tasks demonstrate that DDR significantly outperforms the\nSFT method, particularly for LLMs with smaller-scale parameters that depend\nmore on the retrieved knowledge. Additionally, DDR exhibits a stronger\ncapability to align the data preference between RAG modules. The DDR method\nmakes the generation module more effective in extracting key information from\ndocuments and mitigating conflicts between parametric memory and external\nknowledge. All codes are available at https://github.com/OpenMatch/RAG-DDR.",
-    "url": "http://arxiv.org/abs/2410.13509v2",
-    "pdf_url": "http://arxiv.org/pdf/2410.13509v2",
-    "published_date": "2024-10-17",
-    "source": "arxiv",
-    "categories": [
-      "cs.CL"
-    ]
-  },
-  {
-    "paper_id": "2401.05856v1",
-    "title": "Seven Failure Points When Engineering a Retrieval Augmented Generation System",
-    "authors": [
-      "Scott Barnett",
-      "Stefanus Kurniawan",
-      "Srikanth Thudumu",
-      "Zach Brannelly",
-      "Mohamed Abdelrazek"
-    ],
-    "abstract": "Software engineers are increasingly adding semantic search capabilities to\napplications using a strategy known as Retrieval Augmented Generation (RAG). A\nRAG system involves finding documents that semantically match a query and then\npassing the documents to a large language model (LLM) such as ChatGPT to\nextract the right answer using an LLM. RAG systems aim to: a) reduce the\nproblem of hallucinated responses from LLMs, b) link sources/references to\ngenerated responses, and c) remove the need for annotating documents with\nmeta-data. However, RAG systems suffer from limitations inherent to information\nretrieval systems and from reliance on LLMs. In this paper, we present an\nexperience report on the failure points of RAG systems from three case studies\nfrom separate domains: research, education, and biomedical. We share the\nlessons learned and present 7 failure points to consider when designing a RAG\nsystem. The two key takeaways arising from our work are: 1) validation of a RAG\nsystem is only feasible during operation, and 2) the robustness of a RAG system\nevolves rather than designed in at the start. We conclude with a list of\npotential research directions on RAG systems for the software engineering\ncommunity.",
-    "url": "http://arxiv.org/abs/2401.05856v1",
-    "pdf_url": "http://arxiv.org/pdf/2401.05856v1",
-    "published_date": "2024-01-11",
-    "source": "arxiv",
-    "categories": [
-      "cs.SE",
-      "cs.AI"
-    ]
-  },
-  {
-    "paper_id": "2404.00657v1",
-    "title": "Observations on Building RAG Systems for Technical Documents",
-    "authors": [
-      "Sumit Soman",
-      "Sujoy Roychowdhury"
-    ],
-    "abstract": "Retrieval augmented generation (RAG) for technical documents creates\nchallenges as embeddings do not often capture domain information. We review\nprior art for important factors affecting RAG and perform experiments to\nhighlight best practices and potential challenges to build RAG systems for\ntechnical documents.",
-    "url": "http://arxiv.org/abs/2404.00657v1",
-    "pdf_url": "http://arxiv.org/pdf/2404.00657v1",
-    "published_date": "2024-03-31",
+    "abstract": "As large language models (LLMs) show impressive performance on complex tasks,\nthey still struggle with longer contextual understanding and high computational\ncosts. To balance efficiency and quality, we introduce LLMSteer, a\nfine-tuning-free framework that enhances LLMs through query-independent\nattention steering. Tested on popular LLMs and datasets, LLMSteer narrows the\nperformance gap with baselines by 65.9% and reduces the runtime delay by up to\n4.8x compared to recent attention steering methods.",
+    "url": "http://arxiv.org/abs/2411.13009v2",
+    "pdf_url": "http://arxiv.org/pdf/2411.13009v2",
+    "published_date": "2024-11-20",
     "source": "arxiv",
     "categories": [
       "cs.LG",
+      "cs.CL"
+    ]
+  },
+  {
+    "paper_id": "1208.4178v1",
+    "title": "MOIST: A Scalable and Parallel Moving Object Indexer with School Tracking",
+    "authors": [
+      "Junchen Jiang",
+      "Hongji Bao",
+      "Edward Y. Chang",
+      "Yuqian Li"
+    ],
+    "abstract": "Location-Based Service (LBS) is rapidly becoming the next ubiquitous\ntechnology for a wide range of mobile applications. To support applications\nthat demand nearest-neighbor and history queries, an LBS spatial indexer must\nbe able to efficiently update, query, archive and mine location records, which\ncan be in contention with each other. In this work, we propose MOIST, whose\nbaseline is a recursive spatial partitioning indexer built upon BigTable. To\nreduce update and query contention, MOIST groups nearby objects of similar\ntrajectory into the same school, and keeps track of only the history of school\nleaders. This dynamic clustering scheme can eliminate redundant updates and\nhence reduce update latency. To improve history query processing, MOIST keeps\nsome history data in memory, while it flushes aged data onto parallel disks in\na locality-preserving way. Through experimental studies, we show that MOIST can\nsupport highly efficient nearest-neighbor and history queries and can scale\nwell with an increasing number of users and update frequency.",
+    "url": "http://arxiv.org/abs/1208.4178v1",
+    "pdf_url": "http://arxiv.org/pdf/1208.4178v1",
+    "published_date": "2012-08-21",
+    "source": "arxiv",
+    "categories": [
+      "cs.DB"
+    ]
+  },
+  {
+    "paper_id": "1911.04139v1",
+    "title": "Pano: Optimizing 360° Video Streaming with a Better Understanding of Quality Perception",
+    "authors": [
+      "Yu Guan",
+      "Chengyuan Zheng",
+      "Zongming Guo",
+      "Xinggong Zhang",
+      "Junchen Jiang"
+    ],
+    "abstract": "Streaming 360{\\deg} videos requires more bandwidth than non-360{\\deg} videos.\nThis is because current solutions assume that users perceive the quality of\n360{\\deg} videos in the same way they perceive the quality of non-360{\\deg}\nvideos. This means the bandwidth demand must be proportional to the size of the\nuser's field of view. However, we found several qualitydetermining factors\nunique to 360{\\deg}videos, which can help reduce the bandwidth demand. They\ninclude the moving speed of a user's viewpoint (center of the user's field of\nview), the recent change of video luminance, and the difference in\ndepth-of-fields of visual objects around the viewpoint. This paper presents\nPano, a 360{\\deg} video streaming system that leverages the 360{\\deg}\nvideo-specific factors. We make three contributions. (1) We build a new quality\nmodel for 360{\\deg} videos that captures the impact of the 360{\\deg}\nvideo-specific factors. (2) Pano proposes a variable-sized tiling scheme in\norder to strike a balance between the perceived quality and video encoding\nefficiency. (3) Pano proposes a new qualityadaptation logic that maximizes\n360{\\deg} video user-perceived quality and is readily deployable. Our\nevaluation (based on user study and trace analysis) shows that compared with\nstate-of-the-art techniques, Pano can save 41-46% bandwidth without any drop in\nthe perceived quality, or it can raise the perceived quality (user rating) by\n25%-142% without using more bandwidth.",
+    "url": "http://arxiv.org/abs/1911.04139v1",
+    "pdf_url": "http://arxiv.org/pdf/1911.04139v1",
+    "published_date": "2019-11-11",
+    "source": "arxiv",
+    "categories": [
+      "cs.MM"
+    ]
+  },
+  {
+    "paper_id": "2211.15959v1",
+    "title": "Enabling Personalized Video Quality Optimization with VidHoc",
+    "authors": [
+      "Xu Zhang",
+      "Paul Schmitt",
+      "Marshini Chetty",
+      "Nick Feamster",
+      "Junchen Jiang"
+    ],
+    "abstract": "The emerging video applications greatly increase the demand in network\nbandwidth that is not easy to scale. To provide higher quality of experience\n(QoE) under limited bandwidth, a recent trend is to leverage the heterogeneity\nof quality preferences across individual users. Although these efforts have\nsuggested the great potential benefits, service providers still have not\ndeployed them to realize the promised QoE improvement. The missing piece is an\nautomation of online per-user QoE modeling and optimization scheme for new\nusers. Previous efforts either optimize QoE by known per-user QoE models or\nlearn a user's QoE model by offline approaches, such as analysis of video\nviewing history and in-lab user study. Relying on such offline modeling is\nproblematic, because QoE optimization will start late for collecting enough\ndata to train an unbiased QoE model. In this paper, we propose VidHoc, the\nfirst automatic system that jointly personalizes QoE model and optimizes QoE in\nan online manner for each new user. VidHoc can build per-user QoE models within\na small number of video sessions as well as maintain good QoE. We evaluate\nVidHoc in a pilot deployment to fifteen users for four months with the care of\nstatistical validity. Compared with other baselines, the results show that\nVidHoc can save 17.3% bandwidth while maintaining the same QoE or improve QoE\nby 13.9% with the same bandwidth.",
+    "url": "http://arxiv.org/abs/2211.15959v1",
+    "pdf_url": "http://arxiv.org/pdf/2211.15959v1",
+    "published_date": "2022-11-29",
+    "source": "arxiv",
+    "categories": [
+      "cs.NI"
+    ]
+  },
+  {
+    "paper_id": "2306.01194v5",
+    "title": "Estimating WebRTC Video QoE Metrics Without Using Application Headers",
+    "authors": [
+      "Taveesh Sharma",
+      "Tarun Mangla",
+      "Arpit Gupta",
+      "Junchen Jiang",
+      "Nick Feamster"
+    ],
+    "abstract": "The increased use of video conferencing applications (VCAs) has made it\ncritical to understand and support end-user quality of experience (QoE) by all\nstakeholders in the VCA ecosystem, especially network operators, who typically\ndo not have direct access to client software. Existing VCA QoE estimation\nmethods use passive measurements of application-level Real-time Transport\nProtocol (RTP) headers. However, a network operator does not always have access\nto RTP headers in all cases, particularly when VCAs use custom RTP protocols\n(e.g., Zoom) or due to system constraints (e.g., legacy measurement systems).\nGiven this challenge, this paper considers the use of more standard features in\nthe network traffic, namely, IP and UDP headers, to provide per-second\nestimates of key VCA QoE metrics such as frames rate and video resolution. We\ndevelop a method that uses machine learning with a combination of flow\nstatistics (e.g., throughput) and features derived based on the mechanisms used\nby the VCAs to fragment video frames into packets. We evaluate our method for\nthree prevalent VCAs running over WebRTC: Google Meet, Microsoft Teams, and\nCisco Webex. Our evaluation consists of 54,696 seconds of VCA data collected\nfrom both (1), controlled in-lab network conditions, and (2) real-world\nnetworks from 15 households. We show that the ML-based approach yields similar\naccuracy compared to the RTP-based methods, despite using only IP/UDP data. For\ninstance, we can estimate FPS within 2 FPS for up to 83.05% of one-second\nintervals in the real-world data, which is only 1.76% lower than using the\napplication-level RTP headers.",
+    "url": "http://arxiv.org/abs/2306.01194v5",
+    "pdf_url": "http://arxiv.org/pdf/2306.01194v5",
+    "published_date": "2023-06-01",
+    "source": "arxiv",
+    "categories": [
+      "cs.NI"
+    ]
+  },
+  {
+    "paper_id": "2410.06112v1",
+    "title": "SwiftQueue: Optimizing Low-Latency Applications with Swift Packet Queuing",
+    "authors": [
+      "Siddhant Ray",
+      "Xi Jiang",
+      "Jack Luo",
+      "Nick Feamster",
+      "Junchen Jiang"
+    ],
+    "abstract": "Low Latency, Low Loss, and Scalable Throughput (L4S), as an emerging\nrouter-queue management technique, has seen steady deployment in the industry.\nAn L4S-enabled router assigns each packet to the queue based on the packet\nheader marking. Currently, L4S employs per-flow queue selection, i.e. all\npackets of a flow are marked the same way and thus use the same queues, even\nthough each packet is marked separately. However, this may hurt tail latency\nand latency-sensitive applications because transient congestion and queue\nbuildups may only affect a fraction of packets in a flow.\n  We present SwiftQueue, a new L4S queue-selection strategy in which a sender\nuses a novel per-packet latency predictor to pinpoint which packets likely have\nlatency spikes or drops. The insight is that many packet-level latency\nvariations result from complex interactions among recent packets at shared\nrouter queues. Yet, these intricate packet-level latency patterns are hard to\nlearn efficiently by traditional models. Instead, SwiftQueue uses a custom\nTransformer, which is well-studied for its expressiveness on sequential\npatterns, to predict the next packet's latency based on the latencies of\nrecently received ACKs. Based on the predicted latency of each outgoing packet,\nSwiftQueue's sender dynamically marks the L4S packet header to assign packets\nto potentially different queues, even within the same flow. Using real network\ntraces, we show that SwiftQueue is 45-65% more accurate in predicting latency\nand its variations than state-of-art methods. Based on its latency prediction,\nSwiftQueue reduces the tail latency for L4S-enabled flows by 36-45%, compared\nwith the existing L4S queue-selection method.",
+    "url": "http://arxiv.org/abs/2410.06112v1",
+    "pdf_url": "http://arxiv.org/pdf/2410.06112v1",
+    "published_date": "2024-10-08",
+    "source": "arxiv",
+    "categories": [
+      "cs.NI",
+      "cs.LG"
+    ]
+  },
+  {
+    "paper_id": "2503.14647v1",
+    "title": "Towards More Economical Context-Augmented LLM Generation by Reusing Stored KV Cache",
+    "authors": [
+      "Hanchen Li",
+      "Yuhan Liu",
+      "Yihua Cheng",
+      "Kuntai Du",
+      "Junchen Jiang"
+    ],
+    "abstract": "Across large language model (LLM) applications, we observe an emerging trend\nfor reusing KV caches to save the prefill delays of processing repeated input\ntexts in different LLM inputs. This has led to a broad design space, including\ncolocating stored KV caches with (or close to) GPUs to various KV cache\ncompression. However, a key question remains unanswered: can these delay\nreductions also be economically favorable? Specifically, we ask whether a\ndeveloper can use public cloud services to store precomputed KV caches and\nreuse them to save delay without incurring more costs in terms of compute,\nstorage, and network. To answer this question, we propose an validated\nanalytical model for the cloud cost (in compute, storage, and network) of\nstoring and reusing KV caches based on various workload parameters, such as\nreuse frequency, generated text lengths, model sizes, etc. Preliminary results\nshow that KV cache reusing is able to save both delay and cloud cost across a\nrange of workloads with long context. And we call more efforts on building more\neconomical context augmented LLM by KV cache reusing.",
+    "url": "http://arxiv.org/abs/2503.14647v1",
+    "pdf_url": "http://arxiv.org/pdf/2503.14647v1",
+    "published_date": "2025-03-18",
+    "source": "arxiv",
+    "categories": [
+      "cs.NI"
+    ]
+  },
+  {
+    "paper_id": "1506.05541v1",
+    "title": "Analyzing TCP Throughput Stability and Predictability with Implications for Adaptive Video Streaming",
+    "authors": [
+      "Yi Sun",
+      "Xiaoqi Yin",
+      "Nanshu Wang",
+      "Junchen Jiang",
+      "Vyas Sekar",
+      "Yun Jin",
+      "Bruno Sinopoli"
+    ],
+    "abstract": "Recent work suggests that TCP throughput stability and predictability within\na video viewing session can inform the design of better video bitrate\nadaptation algorithms. Despite a rich tradition of Internet measurement,\nhowever, our understanding of throughput stability and predictability is quite\nlimited. To bridge this gap, we present a measurement study of throughput\nstability using a large-scale dataset from a video service provider. Drawing on\nthis analysis, we propose a simple-but-effective prediction mechanism based on\na hidden Markov model and demonstrate that it outperforms other approaches. We\nalso show the practical implications in improving the user experience of\nadaptive video streaming.",
+    "url": "http://arxiv.org/abs/1506.05541v1",
+    "pdf_url": "http://arxiv.org/pdf/1506.05541v1",
+    "published_date": "2015-06-18",
+    "source": "arxiv",
+    "categories": [
+      "cs.NI"
+    ]
+  },
+  {
+    "paper_id": "1709.08339v2",
+    "title": "Machine Learning for Networking: Workflow, Advances and Opportunities",
+    "authors": [
+      "Mowei Wang",
+      "Yong Cui",
+      "Xin Wang",
+      "Shihan Xiao",
+      "Junchen Jiang"
+    ],
+    "abstract": "Recently, machine learning has been used in every possible field to leverage\nits amazing power. For a long time, the net-working and distributed computing\nsystem is the key infrastructure to provide efficient computational resource\nfor machine learning. Networking itself can also benefit from this promising\ntechnology. This article focuses on the application of Machine Learning\ntechniques for Networking (MLN), which can not only help solve the intractable\nold network questions but also stimulate new network applications. In this\narticle, we summarize the basic workflow to explain how to apply the machine\nlearning technology in the networking domain. Then we provide a selective\nsurvey of the latest representative advances with explanations on their design\nprinciples and benefits. These advances are divided into several network design\nobjectives and the detailed information of how they perform in each step of MLN\nworkflow is presented. Finally, we shed light on the new opportunities on\nnetworking design and community building of this new inter-discipline. Our goal\nis to provide a broad research guideline on networking with machine learning to\nhelp and motivate researchers to develop innovative algorithms, standards and\nframeworks.",
+    "url": "http://arxiv.org/abs/1709.08339v2",
+    "pdf_url": "http://arxiv.org/pdf/1709.08339v2",
+    "published_date": "2017-09-25",
+    "source": "arxiv",
+    "categories": [
+      "cs.NI"
+    ]
+  },
+  {
+    "paper_id": "1809.02318v4",
+    "title": "Scaling Video Analytics Systems to Large Camera Deployments",
+    "authors": [
+      "Samvit Jain",
+      "Ganesh Ananthanarayanan",
+      "Junchen Jiang",
+      "Yuanchao Shu",
+      "Joseph E. Gonzalez"
+    ],
+    "abstract": "Driven by advances in computer vision and the falling costs of camera\nhardware, organizations are deploying video cameras en masse for the spatial\nmonitoring of their physical premises. Scaling video analytics to massive\ncamera deployments, however, presents a new and mounting challenge, as compute\ncost grows proportionally to the number of camera feeds. This paper is driven\nby a simple question: can we scale video analytics in such a way that cost\ngrows sublinearly, or even remains constant, as we deploy more cameras, while\ninference accuracy remains stable, or even improves. We believe the answer is\nyes. Our key observation is that video feeds from wide-area camera deployments\ndemonstrate significant content correlations (e.g. to other geographically\nproximate feeds), both in space and over time. These spatio-temporal\ncorrelations can be harnessed to dramatically reduce the size of the inference\nsearch space, decreasing both workload and false positive rates in multi-camera\nvideo analytics. By discussing use-cases and technical challenges, we propose a\nroadmap for scaling video analytics to large camera networks, and outline a\nplan for its realization.",
+    "url": "http://arxiv.org/abs/1809.02318v4",
+    "pdf_url": "http://arxiv.org/pdf/1809.02318v4",
+    "published_date": "2018-09-07",
+    "source": "arxiv",
+    "categories": [
+      "cs.DC",
+      "cs.CV"
+    ]
+  },
+  {
+    "paper_id": "1809.10242v2",
+    "title": "Addressing Training Bias via Automated Image Annotation",
+    "authors": [
+      "Zhujun Xiao",
+      "Yanzi Zhu",
+      "Yuxin Chen",
+      "Ben Y. Zhao",
+      "Junchen Jiang",
+      "Haitao Zheng"
+    ],
+    "abstract": "Build accurate DNN models requires training on large labeled, context\nspecific datasets, especially those matching the target scenario. We believe\nadvances in wireless localization, working in unison with cameras, can produce\nautomated annotation of targets on images and videos captured in the wild.\nUsing pedestrian and vehicle detection as examples, we demonstrate the\nfeasibility, benefits, and challenges of an automatic image annotation system.\nOur work calls for new technical development on passive localization, mobile\ndata analytics, and error-resilient ML models, as well as design issues in user\nprivacy policies.",
+    "url": "http://arxiv.org/abs/1809.10242v2",
+    "pdf_url": "http://arxiv.org/pdf/1809.10242v2",
+    "published_date": "2018-09-22",
+    "source": "arxiv",
+    "categories": [
+      "cs.CV",
+      "cs.LG",
+      "stat.ML"
+    ]
+  },
+  {
+    "paper_id": "2105.08694v1",
+    "title": "Towards Performance Clarity of Edge Video Analytics",
+    "authors": [
+      "Zhujun Xiao",
+      "Zhengxu Xia",
+      "Haitao Zheng",
+      "Ben Y. Zhao",
+      "Junchen Jiang"
+    ],
+    "abstract": "Edge video analytics is becoming the solution to many safety and management\ntasks. Its wide deployment, however, must first address the tension between\ninference accuracy and resource (compute/network) cost. This has led to the\ndevelopment of video analytics pipelines (VAPs), which reduce resource cost by\ncombining DNN compression/speedup techniques with video processing heuristics.\nOur measurement study on existing VAPs, however, shows that today's methods for\nevaluating VAPs are incomplete, often producing premature conclusions or\nambiguous results. This is because each VAP's performance varies substantially\nacross videos and time (even under the same scenario) and is sensitive to\ndifferent subsets of video content characteristics.\n  We argue that accurate VAP evaluation must first characterize the complex\ninteraction between VAPs and video characteristics, which we refer to as VAP\nperformance clarity. We design and implement Yoda, the first VAP benchmark to\nachieve performance clarity. Using primitive-based profiling and a carefully\ncurated benchmark video set, Yoda builds a performance clarity profile for each\nVAP to precisely define its accuracy/cost tradeoff and its relationship with\nvideo characteristics. We show that Yoda substantially improves VAP evaluations\nby (1) providing a comprehensive, transparent assessment of VAP performance and\nits dependencies on video characteristics; (2) explicitly identifying\nfine-grained VAP behaviors that were previously hidden by large performance\nvariance; and (3) revealing strengths/weaknesses among different VAPs and new\ndesign opportunities.",
+    "url": "http://arxiv.org/abs/2105.08694v1",
+    "pdf_url": "http://arxiv.org/pdf/2105.08694v1",
+    "published_date": "2021-05-18",
+    "source": "arxiv",
+    "categories": [
+      "cs.PF"
+    ]
+  },
+  {
+    "paper_id": "2204.12534v1",
+    "title": "AccMPEG: Optimizing Video Encoding for Video Analytics",
+    "authors": [
+      "Kuntai Du",
+      "Qizheng Zhang",
+      "Anton Arapin",
+      "Haodong Wang",
+      "Zhengxu Xia",
+      "Junchen Jiang"
+    ],
+    "abstract": "With more videos being recorded by edge sensors (cameras) and analyzed by\ncomputer-vision deep neural nets (DNNs), a new breed of video streaming systems\nhas emerged, with the goal to compress and stream videos to remote servers in\nreal time while preserving enough information to allow highly accurate\ninference by the server-side DNNs. An ideal design of the video streaming\nsystem should simultaneously meet three key requirements: (1) low latency of\nencoding and streaming, (2) high accuracy of server-side DNNs, and (3) low\ncompute overheads on the camera. Unfortunately, despite many recent efforts,\nsuch video streaming system has hitherto been elusive, especially when serving\nadvanced vision tasks such as object detection or semantic segmentation. This\npaper presents AccMPEG, a new video encoding and streaming system that meets\nall the three requirements. The key is to learn how much the encoding quality\nat each (16x16) macroblock can influence the server-side DNN accuracy, which we\ncall accuracy gradient. Our insight is that these macroblock-level accuracy\ngradient can be inferred with sufficient precision by feeding the video frames\nthrough a cheap model. AccMPEG provides a suite of techniques that, given a new\nserver-side DNN, can quickly create a cheap model to infer the accuracy\ngradient on any new frame in near realtime. Our extensive evaluation of AccMPEG\non two types of edge devices (one Intel Xeon Silver 4100 CPU or NVIDIA Jetson\nNano) and three vision tasks (six recent pre-trained DNNs) shows that AccMPEG\n(with the same camera-side compute resources) can reduce the end-to-end\ninference delay by 10-43% without hurting accuracy compared to the\nstate-of-the-art baselines",
+    "url": "http://arxiv.org/abs/2204.12534v1",
+    "pdf_url": "http://arxiv.org/pdf/2204.12534v1",
+    "published_date": "2022-04-26",
+    "source": "arxiv",
+    "categories": [
+      "cs.NI",
+      "cs.CV",
+      "cs.MM"
+    ]
+  },
+  {
+    "paper_id": "2210.16639v1",
+    "title": "GRACE: Loss-Resilient Real-Time Video Communication Using Data-Scalable Autoencoder",
+    "authors": [
+      "Yihua Cheng",
+      "Anton Arapin",
+      "Ziyi Zhang",
+      "Qizheng Zhang",
+      "Hanchen Li",
+      "Nick Feamster",
+      "Junchen Jiang"
+    ],
+    "abstract": "Across many real-time video applications, we see a growing need (especially\nin long delays and dynamic bandwidth) to allow clients to decode each frame\nonce any (non-empty) subset of its packets is received and improve quality with\neach new packet. We call it data-scalable delivery. Unfortunately, existing\ntechniques (e.g., FEC, RS and Fountain Codes) fall short: they require either\ndelivery of a minimum number of packets to decode frames, and/or pad video data\nwith redundancy in anticipation of packet losses, which hurts video quality if\nno packets get lost. This work explores a new approach, inspired by recent\nadvances of neural-network autoencoders, which make data-scalable delivery\npossible. We present Grace, a concrete data-scalable real-time video system.\nWith the same video encoding, Grace's quality is slightly lower than\ntraditional codec without redundancy when no packet is lost, but with each\nmissed packet, its quality degrades much more gracefully than existing\nsolutions, allowing clients to flexibly trade between frame delay and video\nquality. Grace makes two contributions: (1) it trains new custom autoencoders\nto balance compression efficiency and resilience against a wide range of packet\nlosses; and (2) it uses a new transmission scheme to deliver autoencoder-coded\nframes as individually decodable packets. We test Grace (and traditional\nloss-resilient schemes and codecs) on real network traces and videos, and show\nthat while Grace's compression efficiency is slightly worse than heavily\nengineered video codecs, it significantly reduces tail video frame delay (by\n2$\\times$ at the 95th percentile) with the marginally lowered video quality",
+    "url": "http://arxiv.org/abs/2210.16639v1",
+    "pdf_url": "http://arxiv.org/pdf/2210.16639v1",
+    "published_date": "2022-10-29",
+    "source": "arxiv",
+    "categories": [
+      "cs.MM",
+      "cs.NI"
+    ]
+  },
+  {
+    "paper_id": "2310.04685v1",
+    "title": "Automatic and Efficient Customization of Neural Networks for ML Applications",
+    "authors": [
+      "Yuhan Liu",
+      "Chengcheng Wan",
+      "Kuntai Du",
+      "Henry Hoffmann",
+      "Junchen Jiang",
+      "Shan Lu",
+      "Michael Maire"
+    ],
+    "abstract": "ML APIs have greatly relieved application developers of the burden to design\nand train their own neural network models -- classifying objects in an image\ncan now be as simple as one line of Python code to call an API. However, these\nAPIs offer the same pre-trained models regardless of how their output is used\nby different applications. This can be suboptimal as not all ML inference\nerrors can cause application failures, and the distinction between inference\nerrors that can or cannot cause failures varies greatly across applications.\n  To tackle this problem, we first study 77 real-world applications, which\ncollectively use six ML APIs from two providers, to reveal common patterns of\nhow ML API output affects applications' decision processes. Inspired by the\nfindings, we propose ChameleonAPI, an optimization framework for ML APIs, which\ntakes effect without changing the application source code. ChameleonAPI\nprovides application developers with a parser that automatically analyzes the\napplication to produce an abstract of its decision process, which is then used\nto devise an application-specific loss function that only penalizes API output\nerrors critical to the application. ChameleonAPI uses the loss function to\nefficiently train a neural network model customized for each application and\ndeploys it to serve API invocations from the respective application via\nexisting interface. Compared to a baseline that selects the best-of-all\ncommercial ML API, we show that ChameleonAPI reduces incorrect application\ndecisions by 43%.",
+    "url": "http://arxiv.org/abs/2310.04685v1",
+    "pdf_url": "http://arxiv.org/pdf/2310.04685v1",
+    "published_date": "2023-10-07",
+    "source": "arxiv",
+    "categories": [
+      "cs.SE",
       "cs.AI",
-      "cs.CL",
-      "I.2.7"
+      "cs.NI"
     ]
   }
 ]

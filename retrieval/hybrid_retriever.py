@@ -488,8 +488,25 @@ class HybridRetriever:
                     0.0, min(float(score), 1.0)
                 )
 
-        # Sort by combined score
+        # Sort by combined score and filter out low-quality results
         sorted_results = sorted(
             combined_results.values(), key=lambda x: x["combined_score"], reverse=True
         )
-        return sorted_results[:top_k]
+
+        # Filter out results below minimum relevance threshold
+        min_threshold = 0.2  # Minimum relevance score to include in results
+        filtered_results = [
+            r for r in sorted_results if r["combined_score"] >= min_threshold
+        ]
+
+        # If we have filtered results, return those, otherwise fall back to original results
+        if filtered_results:
+            return filtered_results[:top_k]
+        elif len(sorted_results) > 0:
+            # Return the best results we have even if they're below threshold
+            return sorted_results[
+                : min(3, len(sorted_results))
+            ]  # Return at most 3 below-threshold results
+        else:
+            # Return empty list if no results found
+            return []
