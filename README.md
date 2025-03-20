@@ -35,21 +35,7 @@ The system consists of the following components:
 4. **Summarization Engine**: Generates summaries and extracts key points
 5. **Web UI**: Streamlit-based user interface for interacting with the system
 
-┌───────────────┐     ┌──────────────┐     ┌────────────────┐
-│ Paper Crawler │────▶│ Index Builder│────▶│ Search Engine  │
-└───────────────┘     └──────────────┘     └────────────────┘
-                                                   │
-                                                   ▼
-┌──────────────┐                          ┌────────────────┐
-│    User      │◀─────────────────────────│   Streamlit    │
-│  Interface   │                          │      UI        │
-└──────────────┘                          └────────────────┘
-                                                   ▲
-                                                   │
-                                           ┌────────────────┐
-                                           │ Summarization  │
-                                           │    Engine      │
-                                           └────────────────
+![system architeture](image/Screenshot%202025-03-20%20154755.png)
 
 
 ## Setup and Installation
